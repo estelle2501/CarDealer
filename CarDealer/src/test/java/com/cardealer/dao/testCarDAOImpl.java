@@ -29,21 +29,24 @@ public class testCarDAOImpl {
 		Car car = new Car();
 		car.setManufactureYear(2009);
 		car.setModel("Alfa Romeo 159");
-
+		
 		CarDAOImpl carDAOImpl = new CarDAOImpl();
 
-		carDAOImpl.addCar(car);
+		int id = carDAOImpl.addCar(car);
+		assertNotEquals(0, id);
 
 	}
 
-	@Ignore
 	@Test
 	public void testAddCarWithWrongAttributes() {
 		Car car = new Car();
 		car.setManufactureYear(20099);
 		car.setModel("Alfa Romeo 159");
+		
 		CarDAOImpl carDAOImpl = new CarDAOImpl();
-		carDAOImpl.addCar(car);
+		
+		int id = carDAOImpl.addCar(car);
+		assertEquals(0, id);
 	}
 
 }
