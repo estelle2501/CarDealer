@@ -48,5 +48,17 @@ public class testCarDAOImpl {
 		int id = carDAOImpl.addCar(car);
 		assertEquals(0, id);
 	}
+	
+	@Test
+	public void testGetCarByID(){
+		int id = 12;
+		CarDAOImpl carDAOImpl = new CarDAOImpl();
+		Car car = null;
+		car = carDAOImpl.getCarById(id);
+		System.out.println(car);
+		assertEquals(id, car.getId());
+		
+		
+	}
 
 }

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.concurrent.locks.StampedLock;
 
 import com.cardealer.model.Car;
 
@@ -26,16 +27,16 @@ public class CarDAOImpl implements CarDAO {
 		int id = 0;
 
 		try (Connection conn = connect();
-				PreparedStatement pstmt = conn.prepareStatement(SQL,
+				PreparedStatement statement = conn.prepareStatement(SQL,
 						Statement.RETURN_GENERATED_KEYS)) {
-			pstmt.setString(1, car.getModel());
-			pstmt.setInt(2, car.getManufactureYear());
+			statement.setString(1, car.getModel());
+			statement.setInt(2, car.getManufactureYear());
 
-			int affectedRows = pstmt.executeUpdate();
+			int affectedRows = statement.executeUpdate();
 
 			if (affectedRows > 0) {
 				// get the ID
-				try (ResultSet rs = pstmt.getGeneratedKeys()) {
+				try (ResultSet rs = statement.getGeneratedKeys()) {
 					if (rs.next()) {
 						id = rs.getInt(1);
 					}
@@ -58,8 +59,26 @@ public class CarDAOImpl implements CarDAO {
 	}
 
 	public Car getCarById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		String SQL = "SELECT id, model, manufacture_year "
+				+ "FROM cars "
+				+ "WHERE id = ?";
+		Car car = new Car();
+
+		try (Connection conn = connect();
+				PreparedStatement statement = conn.prepareStatement(SQL)) {
+			statement.setInt(1, id);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()){
+				car.setId(rs.getInt("id"));
+				car.setModel(rs.getString("model"));
+				car.setManufactureYear(rs.getInt("manufacture_year"));				
+			}
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
+
+		return car;
 	}
 
 	public void deleteCar(int id) {
