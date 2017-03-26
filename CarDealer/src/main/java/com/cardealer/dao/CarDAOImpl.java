@@ -159,7 +159,30 @@ public class CarDAOImpl implements CarDAO {
 	}
 
 	public List<Car> selectCarsByManufactureYear(int manufactureYear) {
-		// TODO Auto-generated method stub
-		return null;
+		String SQLSelectModel = "SELECT id, manufacture_year, model FROM cars WHERE manufacture_year = ?";
+		List<Car> foundCarsList = new ArrayList<>();
+
+		try (Connection conn = connect();
+				PreparedStatement statement = conn
+						.prepareStatement(SQLSelectModel)) {
+
+			statement.setInt(1, manufactureYear);
+
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				Car car = new Car();
+				car.setId(rs.getInt(CARS_ID));
+				car.setManufactureYear(rs.getInt(CARS_MANUFACTURE_YEAR));
+				car.setModel(rs.getString(CARS_MODEL));
+
+				foundCarsList.add(car);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return foundCarsList;
 	}
 }

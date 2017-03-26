@@ -93,10 +93,8 @@ public class testCarDAOImpl {
 		car.setModel("Alfa Romeo Mito");
 
 		int id = carDAOImpl.addCar(car);
-		System.out.println(id);
 
 		car.setId(id);
-		System.out.println(car);
 
 		/*
 		 * What is better deleteCar (id) or deleteCar (Car) ?
@@ -122,6 +120,15 @@ public class testCarDAOImpl {
 		System.out.println("Number of found Alfa Romeo Giulia: "
 				+ foundCarsGiulia.size());
 
+	}
+	
+	@Test
+	public void testSelectCarsByManufactureYear() {
+		int manufactureYear2004 = 2004;
+		List<Car> foundCars2004 = carDAOImpl.selectCarsByManufactureYear(manufactureYear2004);
+
+		System.out.println("Number of found cars of manufacture year 2004: "
+				+ foundCars2004.size());
 	}
 
 }
