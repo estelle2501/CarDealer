@@ -23,13 +23,18 @@ import java.sql.SQLXML;
 import java.sql.Statement;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.locks.StampedLock;
 
 import com.cardealer.model.Car;
 
 public class CarDAOImpl implements CarDAO {
 
+	private static final String CARS_MANUFACTURE_YEAR = "manufacture_year";
+	private static final String CARS_MODEL = "model";
+	private static final String CARS_ID = "id";
 	private final String url = "jdbc:postgresql://localhost:5432/cardealer";
 	private final String user = "postgres";
 	private final String password = "marchewka3";
@@ -98,9 +103,9 @@ public class CarDAOImpl implements CarDAO {
 			statement.setInt(1, id);
 			ResultSet rs = statement.executeQuery();
 			while (rs.next()) {
-				car.setId(rs.getInt("id"));
-				car.setModel(rs.getString("model"));
-				car.setManufactureYear(rs.getInt("manufacture_year"));
+				car.setId(rs.getInt(CARS_ID));
+				car.setModel(rs.getString(CARS_MODEL));
+				car.setManufactureYear(rs.getInt(CARS_MANUFACTURE_YEAR));
 			}
 
 		} catch (SQLException ex) {
@@ -123,5 +128,38 @@ public class CarDAOImpl implements CarDAO {
 			e.printStackTrace();
 		}
 
+	}
+
+	public List<Car> selectCarsByModel(String carModel) {
+		String SQLSelectModel = "SELECT id, manufacture_year, model FROM cars WHERE model = ?";
+		List<Car> foundCarsList = new ArrayList<>();
+
+		try (Connection conn = connect();
+				PreparedStatement statement = conn
+						.prepareStatement(SQLSelectModel)) {
+
+			statement.setString(1, carModel);
+
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				Car car = new Car();
+				car.setId(rs.getInt(CARS_ID));
+				car.setManufactureYear(rs.getInt(CARS_MANUFACTURE_YEAR));
+				car.setModel(rs.getString(CARS_MODEL));
+
+				foundCarsList.add(car);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return foundCarsList;
+	}
+
+	public List<Car> selectCarsByManufactureYear(int manufactureYear) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
