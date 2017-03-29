@@ -16,7 +16,7 @@ public class CSVAdapter {
 	private static final String LINE_SEPARATOR = "\\s*,\\s*";
 	private static String line = "";
 
-	public void readCSV() {
+	public static void readCSV() {
 		try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
 
 			while ((line = br.readLine()) != null) {
@@ -38,7 +38,7 @@ public class CSVAdapter {
 
 			while ((line = br.readLine()) != null) {
 
-				List<String> csvColumnsList = Arrays.asList(line.split("\\s*,\\s*"));
+				List<String> csvColumnsList = Arrays.asList(line.split(LINE_SEPARATOR));
 				Car car = new Car();
 				car.setModel(csvColumnsList.get(0));
 				car.setManufactureYear(Integer.parseInt(csvColumnsList.get(1)));

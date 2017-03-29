@@ -12,14 +12,13 @@ public class TestCSVAdapter {
 
 	@Test
 	public void testReadCSV() {
-		CSVAdapter ca = new CSVAdapter();
-		ca.readCSV();
+		CSVAdapter.readCSV();
 	}
 	
 	@Test
 	public void testreadCarsFromCSV() {
-		CSVAdapter ca = new CSVAdapter();
-		List<Car> carsList = ca.readCarsFromCSV();
+		
+		List<Car> carsList = CSVAdapter.readCarsFromCSV();
 		for (Car c : carsList){
 			System.out.println(c.toString());
 		}
