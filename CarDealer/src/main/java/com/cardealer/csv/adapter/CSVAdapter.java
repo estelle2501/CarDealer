@@ -12,9 +12,9 @@ import com.cardealer.model.Car;
 
 public class CSVAdapter {
 
-	private final String FILE_PATH = "C:/Users/Magda/git/CarDealerRepository/cars.csv";
-	private final String LINE_SEPARATOR = "\\s*,\\s*";
-	String line = "";
+	private static final String FILE_PATH = "C:/Users/Magda/git/CarDealerRepository/cars.csv";
+	private static final String LINE_SEPARATOR = "\\s*,\\s*";
+	private static String line = "";
 
 	public void readCSV() {
 		try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH))) {
@@ -30,7 +30,7 @@ public class CSVAdapter {
 
 	}
 
-	public List<Car> readCarsFromCSV() {
+	public static List<Car> readCarsFromCSV() {
 
 		List<Car> carsList = new ArrayList<>();
 
