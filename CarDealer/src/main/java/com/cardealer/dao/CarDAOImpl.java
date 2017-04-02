@@ -39,13 +39,14 @@ public class CarDAOImpl implements CarDAO {
 	private final String user = "postgres";
 	private final String password = "marchewka3";
 
+	private String SQLinsert = "INSERT INTO cars (model, manufacture_year)"
+			+ "VALUES (?,?)";
+
 	public Connection connect() throws SQLException {
 		return DriverManager.getConnection(url, user, password);
 	}
 
 	public int addCar(Car car) {
-		String SQLinsert = "INSERT INTO cars (model, manufacture_year)"
-				+ "VALUES (?,?)";
 
 		int id = 0;
 
@@ -184,5 +185,30 @@ public class CarDAOImpl implements CarDAO {
 		}
 
 		return foundCarsList;
+	}
+
+	public void addCars(List<Car> carsList) {
+
+		try (Connection conn = connect();
+				PreparedStatement statement = conn
+						.prepareStatement(SQLinsert)) {
+			
+			conn.setAutoCommit(false);
+			
+			for (Car car : carsList){
+				statement.setString(1, car.getModel());
+				statement.setInt(2, car.getManufactureYear());
+		        statement.addBatch();
+			}
+			
+			statement.executeBatch();
+			
+			conn.commit();
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 }
