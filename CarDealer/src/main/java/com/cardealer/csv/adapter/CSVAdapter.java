@@ -41,7 +41,7 @@ public class CSVAdapter {
 				List<String> csvColumnsList = Arrays.asList(line.split(LINE_SEPARATOR));
 				Car car = new Car();
 				car.setModel(csvColumnsList.get(0));
-				car.setManufactureYear(Integer.parseInt(csvColumnsList.get(1)));
+				car.setYear(Integer.parseInt(csvColumnsList.get(1)));
 				carsList.add(car);
 			}
 

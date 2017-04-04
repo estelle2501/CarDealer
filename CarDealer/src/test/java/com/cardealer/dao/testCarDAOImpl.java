@@ -33,7 +33,7 @@ public class testCarDAOImpl {
 	@Test
 	public void testAddCar() {
 		Car car = new Car();
-		car.setManufactureYear(2009);
+		car.setYear(2009);
 		car.setModel("Alfa Romeo 159");
 
 		int id = carDAOImpl.addCar(car);
@@ -45,7 +45,7 @@ public class testCarDAOImpl {
 	@Test
 	public void testAddCarWithWrongAttributes() {
 		Car car = new Car();
-		car.setManufactureYear(20099);
+		car.setYear(20099);
 		car.setModel("Alfa Romeo 159");
 
 		int id = carDAOImpl.addCar(car);
@@ -64,7 +64,7 @@ public class testCarDAOImpl {
 	@Test
 	public void testUpdateCar() {
 		Car car = new Car();
-		car.setManufactureYear(2018);
+		car.setYear(2018);
 		car.setModel("Alfa Romeo Giulia");
 
 		/*
@@ -78,7 +78,7 @@ public class testCarDAOImpl {
 
 		System.out.println("Car: " + car);
 
-		car.setManufactureYear(2017);
+		car.setYear(2017);
 		carDAOImpl.updateCar(car);
 
 		System.out
@@ -89,7 +89,7 @@ public class testCarDAOImpl {
 	@Test
 	public void testDeleteCar() {
 		Car car = new Car();
-		car.setManufactureYear(2013);
+		car.setYear(2013);
 		car.setModel("Alfa Romeo Mito");
 
 		int id = carDAOImpl.addCar(car);
@@ -123,11 +123,11 @@ public class testCarDAOImpl {
 	}
 	
 	@Test
-	public void testSelectCarsByManufactureYear() {
-		int manufactureYear2004 = 2004;
-		List<Car> foundCars2004 = carDAOImpl.selectCarsByManufactureYear(manufactureYear2004);
+	public void testSelectCarsByYear() {
+		int Year2004 = 2004;
+		List<Car> foundCars2004 = carDAOImpl.selectCarsByYear(Year2004);
 
-		System.out.println("Number of found cars of manufacture year 2004: "
+		System.out.println("Number of found cars of year 2004: "
 				+ foundCars2004.size());
 	}
 

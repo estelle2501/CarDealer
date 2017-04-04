@@ -11,6 +11,6 @@ public interface CarDAO {
 	public Car getCarById (int id);
 	public void deleteCar(int id);
 	public List<Car> selectCarsByModel(String carModel);
-	public List<Car> selectCarsByManufactureYear(int manufactureYear);
+	public List<Car> selectCarsByYear(int year);
 	public void addCars(List<Car> carsList); 
 }

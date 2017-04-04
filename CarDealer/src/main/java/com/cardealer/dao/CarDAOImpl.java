@@ -32,14 +32,22 @@ import com.cardealer.model.Car;
 
 public class CarDAOImpl implements CarDAO {
 
-	private static final String CARS_MANUFACTURE_YEAR = "manufacture_year";
-	private static final String CARS_MODEL = "model";
 	private static final String CARS_ID = "id";
+	private static final String CARS_YEAR = "year";
+	private static final String CARS_MAKE = "make";
+	private static final String CARS_MODEL = "model";
+	private static final String CARS_FUEL = "fuel";
+	private static final String CARS_ENGINE = "engine";
+	private static final String CARS_GEARBOX = "gearbox";
+	private static final String CARS_COLOR = "color";
+	private static final String CARS_KILOMETER = "kilometer";
+
 	private final String url = "jdbc:postgresql://localhost:5432/cardealer";
 	private final String user = "postgres";
 	private final String password = "marchewka3";
 
-	private String SQLinsert = "INSERT INTO cars (model, manufacture_year)"
+	private String SQLinsert = "INSERT INTO cars "
+			+ "(make, model, year, fuel, engine, gearbox, color, kilometer)"
 			+ "VALUES (?,?)";
 
 	public Connection connect() throws SQLException {
@@ -53,8 +61,14 @@ public class CarDAOImpl implements CarDAO {
 		try (Connection conn = connect();
 				PreparedStatement statement = conn.prepareStatement(SQLinsert,
 						Statement.RETURN_GENERATED_KEYS)) {
-			statement.setString(1, car.getModel());
-			statement.setInt(2, car.getManufactureYear());
+			statement.setString(1, car.getMake());
+			statement.setString(2, car.getModel());
+			statement.setInt(3, car.getYear());
+			statement.setString(4, car.getFuel());
+			statement.setFloat(5, car.getEngine());
+			statement.setString(6, car.getGearbox());
+			statement.setString(7, car.getColor());
+			statement.setInt(8, car.getKilometer());
 
 			int affectedRows = statement.executeUpdate();
 
@@ -78,13 +92,20 @@ public class CarDAOImpl implements CarDAO {
 	}
 
 	public void updateCar(Car car) {
-		String SQLupdate = "UPDATE cars SET model = ?, manufacture_year = ? WHERE id = ?";
+		String SQLupdate = "UPDATE cars "
+				+ "SET make =?, model = ?, year = ? , fuel = ?, engine = ?, "
+				+ "gearbox = ?, color = ?, kilometer = ? " + "WHERE id = ?";
 
 		try (Connection conn = connect();
 				PreparedStatement statement = conn.prepareStatement(SQLupdate)) {
-			statement.setString(1, car.getModel());
-			statement.setInt(2, car.getManufactureYear());
-			statement.setInt(3, car.getId());
+			statement.setString(1, car.getMake());
+			statement.setString(2, car.getModel());
+			statement.setInt(3, car.getYear());
+			statement.setString(4, car.getFuel());
+			statement.setFloat(5, car.getEngine());
+			statement.setString(6, car.getGearbox());
+			statement.setString(7, car.getColor());
+			statement.setInt(8, car.getKilometer());
 
 			statement.executeUpdate();
 
@@ -95,7 +116,8 @@ public class CarDAOImpl implements CarDAO {
 	}
 
 	public Car getCarById(int id) {
-		String SQLgetCar = "SELECT id, model, manufacture_year " + "FROM cars "
+		String SQLgetCar = "SELECT id, make, model, year, fuel,"
+				+ " engine, gearbox, color, kilometer " + "FROM cars "
 				+ "WHERE id = ?";
 		Car car = new Car();
 
@@ -105,8 +127,13 @@ public class CarDAOImpl implements CarDAO {
 			ResultSet rs = statement.executeQuery();
 			while (rs.next()) {
 				car.setId(rs.getInt(CARS_ID));
+				car.setMake(rs.getString(CARS_MAKE));
 				car.setModel(rs.getString(CARS_MODEL));
-				car.setManufactureYear(rs.getInt(CARS_MANUFACTURE_YEAR));
+				car.setYear(rs.getInt(CARS_YEAR));
+				car.setFuel(rs.getString(CARS_FUEL));
+				car.setEngine(rs.getFloat(CARS_ENGINE));
+				car.setGearbox(rs.getString(CARS_GEARBOX));
+				car.setKilometer(rs.getInt(CARS_KILOMETER));
 			}
 
 		} catch (SQLException ex) {
@@ -132,7 +159,9 @@ public class CarDAOImpl implements CarDAO {
 	}
 
 	public List<Car> selectCarsByModel(String carModel) {
-		String SQLSelectModel = "SELECT id, manufacture_year, model FROM cars WHERE model = ?";
+		String SQLSelectModel = "SELECT id, make, model, year, fuel,"
+				+ " engine, gearbox, color, kilometer  "
+				+ "FROM cars WHERE model = ?";
 		List<Car> foundCarsList = new ArrayList<>();
 
 		try (Connection conn = connect();
@@ -146,9 +175,13 @@ public class CarDAOImpl implements CarDAO {
 			while (rs.next()) {
 				Car car = new Car();
 				car.setId(rs.getInt(CARS_ID));
-				car.setManufactureYear(rs.getInt(CARS_MANUFACTURE_YEAR));
+				car.setMake(rs.getString(CARS_MAKE));
 				car.setModel(rs.getString(CARS_MODEL));
-
+				car.setYear(rs.getInt(CARS_YEAR));
+				car.setFuel(rs.getString(CARS_FUEL));
+				car.setEngine(rs.getFloat(CARS_ENGINE));
+				car.setGearbox(rs.getString(CARS_GEARBOX));
+				car.setKilometer(rs.getInt(CARS_KILOMETER));
 				foundCarsList.add(car);
 			}
 
@@ -159,23 +192,30 @@ public class CarDAOImpl implements CarDAO {
 		return foundCarsList;
 	}
 
-	public List<Car> selectCarsByManufactureYear(int manufactureYear) {
-		String SQLSelectModel = "SELECT id, manufacture_year, model FROM cars WHERE manufacture_year = ?";
+	public List<Car> selectCarsByYear(int year) {
+		String SQLSelectModel = "SELECT  id, make, model, year, fuel,"
+				+ " engine, gearbox, color, kilometer "
+				+ "FROM cars WHERE year = ?";
 		List<Car> foundCarsList = new ArrayList<>();
 
 		try (Connection conn = connect();
 				PreparedStatement statement = conn
 						.prepareStatement(SQLSelectModel)) {
 
-			statement.setInt(1, manufactureYear);
+			statement.setInt(1, year);
 
 			ResultSet rs = statement.executeQuery();
 
 			while (rs.next()) {
 				Car car = new Car();
 				car.setId(rs.getInt(CARS_ID));
-				car.setManufactureYear(rs.getInt(CARS_MANUFACTURE_YEAR));
+				car.setMake(rs.getString(CARS_MAKE));
 				car.setModel(rs.getString(CARS_MODEL));
+				car.setYear(rs.getInt(CARS_YEAR));
+				car.setFuel(rs.getString(CARS_FUEL));
+				car.setEngine(rs.getFloat(CARS_ENGINE));
+				car.setGearbox(rs.getString(CARS_GEARBOX));
+				car.setKilometer(rs.getInt(CARS_KILOMETER));
 
 				foundCarsList.add(car);
 			}
@@ -190,21 +230,24 @@ public class CarDAOImpl implements CarDAO {
 	public void addCars(List<Car> carsList) {
 
 		try (Connection conn = connect();
-				PreparedStatement statement = conn
-						.prepareStatement(SQLinsert)) {
-			
+				PreparedStatement statement = conn.prepareStatement(SQLinsert)) {
+
 			conn.setAutoCommit(false);
-			
-			for (Car car : carsList){
-				statement.setString(1, car.getModel());
-				statement.setInt(2, car.getManufactureYear());
-		        statement.addBatch();
+
+			for (Car car : carsList) {
+				statement.setString(1, car.getMake());
+				statement.setString(2, car.getModel());
+				statement.setInt(3, car.getYear());
+				statement.setString(4, car.getFuel());
+				statement.setFloat(5, car.getEngine());
+				statement.setString(6, car.getGearbox());
+				statement.setString(7, car.getColor());
+				statement.setInt(8, car.getKilometer());
 			}
-			
+
 			statement.executeBatch();
-			
+
 			conn.commit();
-			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
