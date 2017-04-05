@@ -33,8 +33,14 @@ public class testCarDAOImpl {
 	@Test
 	public void testAddCar() {
 		Car car = new Car();
+		car.setMake("Alfa Romeo");
+		car.setModel("159");
 		car.setYear(2009);
-		car.setModel("Alfa Romeo 159");
+		car.setEngine(1.9f);
+		car.setFuel("diesel");
+		car.setGearbox("manual");
+		car.setKilometer(76000);
+		car.setColor("red");
 
 		int id = carDAOImpl.addCar(car);
 		assertNotEquals(0, id);
@@ -45,16 +51,18 @@ public class testCarDAOImpl {
 	@Test
 	public void testAddCarWithWrongAttributes() {
 		Car car = new Car();
-		car.setYear(20099);
-		car.setModel("Alfa Romeo 159");
+		car.setYear(20098);
+		car.setMake("Alfa Romeo");
+		car.setModel("159");
 
 		int id = carDAOImpl.addCar(car);
 		assertEquals(0, id);
 	}
 
+	@Ignore
 	@Test
 	public void testGetCarByID() {
-		int id = 12;
+		int id = 110;
 		Car car = carDAOImpl.getCarById(id);
 		assertEquals(id, car.getId());
 
@@ -65,7 +73,8 @@ public class testCarDAOImpl {
 	public void testUpdateCar() {
 		Car car = new Car();
 		car.setYear(2018);
-		car.setModel("Alfa Romeo Giulia");
+		car.setMake("Alfa Romeo");
+		car.setModel("Giulia");
 
 		/*
 		 * I don't like the fact I have to setId to the car shouldn't addCar do
@@ -90,7 +99,8 @@ public class testCarDAOImpl {
 	public void testDeleteCar() {
 		Car car = new Car();
 		car.setYear(2013);
-		car.setModel("Alfa Romeo Mito");
+		car.setMake("Alfa Romeo");
+		car.setModel("Mito");
 
 		int id = carDAOImpl.addCar(car);
 
@@ -105,17 +115,17 @@ public class testCarDAOImpl {
 
 	@Test
 	public void testSelectCarsByModel() {
-		List<Car> foundCars159 = carDAOImpl.selectCarsByModel("Alfa Romeo 159");
+		List<Car> foundCars159 = carDAOImpl.selectCarsByModel("159");
 
 		System.out.println("Number of found Alfa Romeo 159: "
 				+ foundCars159.size());
 
-		List<Car> foundCarsMito = carDAOImpl.selectCarsByModel("Alfa Romeo Mito");
+		List<Car> foundCarsMito = carDAOImpl.selectCarsByModel("Mito");
 
 		System.out.println("Number of found Alfa Romeo Mito: "
 				+ foundCarsMito.size());
 		
-		List<Car> foundCarsGiulia = carDAOImpl.selectCarsByModel("Alfa Romeo Giulia");
+		List<Car> foundCarsGiulia = carDAOImpl.selectCarsByModel("Giulia");
 
 		System.out.println("Number of found Alfa Romeo Giulia: "
 				+ foundCarsGiulia.size());

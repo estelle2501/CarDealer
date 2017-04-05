@@ -40,8 +40,14 @@ public class CSVAdapter {
 
 				List<String> csvColumnsList = Arrays.asList(line.split(LINE_SEPARATOR));
 				Car car = new Car();
-				car.setModel(csvColumnsList.get(0));
-				car.setYear(Integer.parseInt(csvColumnsList.get(1)));
+				car.setMake(csvColumnsList.get(0));
+				car.setModel(csvColumnsList.get(1));
+				car.setYear(Integer.parseInt(csvColumnsList.get(2)));
+				car.setFuel(csvColumnsList.get(3));
+				car.setEngine(Float.parseFloat(csvColumnsList.get(4)));
+				car.setGearbox(csvColumnsList.get(5));
+				car.setColor(csvColumnsList.get(6));
+				car.setKilometer(Integer.parseInt(csvColumnsList.get(7)));
 				carsList.add(car);
 			}
 

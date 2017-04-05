@@ -16,7 +16,7 @@ public class TestCSVAdapter {
 	}
 	
 	@Test
-	public void testreadCarsFromCSV() {
+	public void testReadCarsFromCSV() {
 		
 		List<Car> carsList = CSVAdapter.readCarsFromCSV();
 		for (Car c : carsList){

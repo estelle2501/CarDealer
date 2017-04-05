@@ -47,8 +47,8 @@ public class CarDAOImpl implements CarDAO {
 	private final String password = "marchewka3";
 
 	private String SQLinsert = "INSERT INTO cars "
-			+ "(make, model, year, fuel, engine, gearbox, color, kilometer)"
-			+ "VALUES (?,?)";
+			+ "(make, model, year, fuel, engine, gearbox, color, kilometer )"
+			+ "VALUES (?,?,?,?,?,?,?,?) ";
 
 	public Connection connect() throws SQLException {
 		return DriverManager.getConnection(url, user, password);
@@ -107,6 +107,8 @@ public class CarDAOImpl implements CarDAO {
 			statement.setString(7, car.getColor());
 			statement.setInt(8, car.getKilometer());
 
+			statement.setInt(9, car.getId());
+
 			statement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -116,7 +118,7 @@ public class CarDAOImpl implements CarDAO {
 	}
 
 	public Car getCarById(int id) {
-		String SQLgetCar = "SELECT id, make, model, year, fuel,"
+		String SQLgetCar = "SELECT id, make, model, year, fuel, "
 				+ " engine, gearbox, color, kilometer " + "FROM cars "
 				+ "WHERE id = ?";
 		Car car = new Car();
@@ -133,6 +135,7 @@ public class CarDAOImpl implements CarDAO {
 				car.setFuel(rs.getString(CARS_FUEL));
 				car.setEngine(rs.getFloat(CARS_ENGINE));
 				car.setGearbox(rs.getString(CARS_GEARBOX));
+				car.setColor(CARS_COLOR);
 				car.setKilometer(rs.getInt(CARS_KILOMETER));
 			}
 
@@ -230,7 +233,8 @@ public class CarDAOImpl implements CarDAO {
 	public void addCars(List<Car> carsList) {
 
 		try (Connection conn = connect();
-				PreparedStatement statement = conn.prepareStatement(SQLinsert)) {
+				PreparedStatement statement = conn.prepareStatement(SQLinsert,
+						Statement.RETURN_GENERATED_KEYS)) {
 
 			conn.setAutoCommit(false);
 
@@ -243,6 +247,7 @@ public class CarDAOImpl implements CarDAO {
 				statement.setString(6, car.getGearbox());
 				statement.setString(7, car.getColor());
 				statement.setInt(8, car.getKilometer());
+				statement.addBatch();
 			}
 
 			statement.executeBatch();
