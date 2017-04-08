@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.cardealer.model.InvalidEngineFormatException;
 import com.cardealer.model.InvalidKilometerRangeException;
 import com.cardealer.model.InvalidLenghtException;
 import com.cardealer.model.InvalidYearFormatException;
@@ -15,7 +16,7 @@ public class TestCSVServiceImpl {
 	@Test
 	public void testCSVImportCars() throws NumberFormatException,
 			InvalidLenghtException, InvalidYearFormatException,
-			InvalidKilometerRangeException {
+			InvalidKilometerRangeException, InvalidEngineFormatException {
 		csvService.CSVImportCars();
 	}
 

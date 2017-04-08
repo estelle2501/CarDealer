@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.concurrent.locks.StampedLock;
 
 import com.cardealer.model.Car;
+import com.cardealer.model.InvalidEngineFormatException;
 import com.cardealer.model.InvalidKilometerRangeException;
 import com.cardealer.model.InvalidLenghtException;
 import com.cardealer.model.InvalidYearFormatException;
@@ -150,6 +151,8 @@ public class CarDAOImpl implements CarDAO {
 			e.printStackTrace();
 		} catch (InvalidKilometerRangeException e) {
 			e.printStackTrace();
+		} catch (InvalidEngineFormatException e) {
+			e.printStackTrace();
 		}
 
 		return car;
@@ -205,6 +208,8 @@ public class CarDAOImpl implements CarDAO {
 			e.printStackTrace();
 		} catch (InvalidKilometerRangeException e) {
 			e.printStackTrace();
+		} catch (InvalidEngineFormatException e) {
+			e.printStackTrace();
 		}
 
 		return foundCarsList;
@@ -245,6 +250,8 @@ public class CarDAOImpl implements CarDAO {
 		} catch (InvalidYearFormatException e) {
 			e.printStackTrace();
 		} catch (InvalidKilometerRangeException e) {
+			e.printStackTrace();
+		} catch (InvalidEngineFormatException e) {
 			e.printStackTrace();
 		}
 

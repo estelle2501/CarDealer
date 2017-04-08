@@ -66,8 +66,13 @@ public class Car {
 		return engine;
 	}
 
-	public void setEngine(float engine){
-		this.engine = engine;
+	public void setEngine(float engine) throws InvalidEngineFormatException{
+		String engineString = "" + engine;
+		if(engineString.matches("[0-9].[0-9]")){
+			this.engine = engine;			
+		}else{
+			throw new InvalidEngineFormatException();
+		}
 	}
 
 	public String getGearbox() {

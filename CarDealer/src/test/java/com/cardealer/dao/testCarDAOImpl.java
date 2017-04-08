@@ -12,6 +12,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import com.cardealer.model.Car;
+import com.cardealer.model.InvalidEngineFormatException;
 import com.cardealer.model.InvalidKilometerRangeException;
 import com.cardealer.model.InvalidLenghtException;
 import com.cardealer.model.InvalidYearFormatException;
@@ -45,14 +46,16 @@ public class testCarDAOImpl {
 			car.setColor("red");
 			car.setYear(2009);
 			car.setKilometer(76000);
+			car.setEngine(1.9f);
 		} catch (InvalidLenghtException e) {
 			e.printStackTrace();
 		} catch (InvalidYearFormatException e) {
 			e.printStackTrace();
 		} catch (InvalidKilometerRangeException e) {
 			e.printStackTrace();
+		} catch (InvalidEngineFormatException e) {
+			e.printStackTrace();
 		}
-		car.setEngine(1.9f);
 
 		int id = carDAOImpl.addCar(car);
 		assertNotEquals(0, id);
@@ -109,6 +112,27 @@ public class testCarDAOImpl {
 		car.setKilometer(999999);
 		assertNotEquals(0, carDAOImpl.addCar(car));
 	}	
+	
+	@Test(expected = InvalidEngineFormatException.class)
+	public void testAddCarWithInvalidEngineFormat100()
+			throws InvalidKilometerRangeException, InvalidLenghtException,
+			InvalidEngineFormatException {
+		Car car = new Car();
+		car.setMake("Alfa Romeo");
+		car.setModel("159");
+		car.setEngine(100);
+	}	
+
+	@Test
+	public void testAddCarWithValidEngineFormat()
+			throws InvalidKilometerRangeException, InvalidLenghtException,
+			InvalidEngineFormatException {
+		Car car = new Car();
+		car.setMake("Alfa Romeo");
+		car.setModel("159");
+		car.setEngine(1.7f);
+		assertNotEquals(0, carDAOImpl.addCar(car));
+	}		
 	
 	@Ignore
 	@Test
