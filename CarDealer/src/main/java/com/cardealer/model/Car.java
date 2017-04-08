@@ -48,7 +48,7 @@ public class Car {
 	}
 
 	public void setFuel(String fuel) throws InvalidLenghtException{
-		if(fuel.length() >= MAX_LENGTH_10){
+		if(fuel.length() <= MAX_LENGTH_10){
 			this.fuel = fuel;			
 		}else{
 			throw new InvalidLenghtException("fuel");
