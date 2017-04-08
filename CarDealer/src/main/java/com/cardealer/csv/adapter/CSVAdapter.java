@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.cardealer.model.Car;
+import com.cardealer.model.InvalidLenghtException;
+import com.cardealer.model.InvalidYearFormat;
 
 public class CSVAdapter {
 
@@ -30,7 +32,7 @@ public class CSVAdapter {
 
 	}
 
-	public static List<Car> readCarsFromCSV() {
+	public static List<Car> readCarsFromCSV() throws InvalidLenghtException, InvalidYearFormat {
 
 		List<Car> carsList = new ArrayList<>();
 
@@ -38,11 +40,17 @@ public class CSVAdapter {
 
 			while ((line = br.readLine()) != null) {
 
-				List<String> csvColumnsList = Arrays.asList(line.split(LINE_SEPARATOR));
+				List<String> csvColumnsList = Arrays.asList(line
+						.split(LINE_SEPARATOR));
 				Car car = new Car();
 				car.setMake(csvColumnsList.get(0));
 				car.setModel(csvColumnsList.get(1));
-				car.setYear(Integer.parseInt(csvColumnsList.get(2)));
+
+				try {
+					car.setYear(Integer.parseInt(csvColumnsList.get(2)));
+				} catch (NumberFormatException ex) {
+					ex.printStackTrace();
+				}
 				car.setFuel(csvColumnsList.get(3));
 				car.setEngine(Float.parseFloat(csvColumnsList.get(4)));
 				car.setGearbox(csvColumnsList.get(5));

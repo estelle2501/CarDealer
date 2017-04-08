@@ -7,6 +7,8 @@ import java.util.List;
 import org.junit.Test;
 
 import com.cardealer.model.Car;
+import com.cardealer.model.InvalidLenghtException;
+import com.cardealer.model.InvalidYearFormat;
 
 public class TestCSVAdapter {
 
@@ -16,7 +18,7 @@ public class TestCSVAdapter {
 	}
 	
 	@Test
-	public void testReadCarsFromCSV() {
+	public void testReadCarsFromCSV() throws InvalidLenghtException, InvalidYearFormat {
 		
 		List<Car> carsList = CSVAdapter.readCarsFromCSV();
 		for (Car c : carsList){

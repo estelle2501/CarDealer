@@ -30,6 +30,7 @@ import java.util.concurrent.locks.StampedLock;
 
 import com.cardealer.model.Car;
 import com.cardealer.model.InvalidLenghtException;
+import com.cardealer.model.InvalidYearFormat;
 
 public class CarDAOImpl implements CarDAO {
 
@@ -144,6 +145,8 @@ public class CarDAOImpl implements CarDAO {
 			System.out.println(ex.getMessage());
 		} catch (InvalidLenghtException e) {
 			e.printStackTrace();
+		} catch (InvalidYearFormat e) {
+			e.printStackTrace();
 		}
 
 		return car;
@@ -195,6 +198,8 @@ public class CarDAOImpl implements CarDAO {
 			e.printStackTrace();
 		} catch (InvalidLenghtException e) {
 			e.printStackTrace();
+		} catch (InvalidYearFormat e) {
+			e.printStackTrace();
 		}
 
 		return foundCarsList;
@@ -231,6 +236,8 @@ public class CarDAOImpl implements CarDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (InvalidLenghtException e) {
+			e.printStackTrace();
+		} catch (InvalidYearFormat e) {
 			e.printStackTrace();
 		}
 

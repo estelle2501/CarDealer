@@ -13,6 +13,7 @@ import org.junit.Test;
 
 import com.cardealer.model.Car;
 import com.cardealer.model.InvalidLenghtException;
+import com.cardealer.model.InvalidYearFormat;
 
 public class testCarDAOImpl {
 
@@ -44,7 +45,11 @@ public class testCarDAOImpl {
 		} catch (InvalidLenghtException e) {
 			e.printStackTrace();
 		}
-		car.setYear(2009);
+		try {
+			car.setYear(2009);
+		} catch (InvalidYearFormat e) {
+			e.printStackTrace();
+		}
 		car.setEngine(1.9f);
 		car.setKilometer(76000);
 
@@ -53,9 +58,8 @@ public class testCarDAOImpl {
 
 	}
 
-	@Ignore
-	@Test
-	public void testAddCarWithWrongAttributes() {
+	@Test(expected = InvalidYearFormat.class)
+	public void testAddCarWithInvalidYearFormat20098() throws InvalidYearFormat {
 		Car car = new Car();
 		car.setYear(20098);
 		try {
@@ -64,17 +68,25 @@ public class testCarDAOImpl {
 		} catch (InvalidLenghtException e) {
 			e.printStackTrace();
 		}
+		int id = carDAOImpl.addCar(car);
+		assertEquals(0, id);
+	}
 
+	@Test(expected = InvalidYearFormat.class)
+	public void testAddCarWithInvalidYearFormat123() throws InvalidYearFormat {
+		Car car = new Car();
+		car.setYear(123);
 		int id = carDAOImpl.addCar(car);
 		assertEquals(0, id);
 	}
 
 	@Test(expected = InvalidLenghtException.class)
-	public void testAddCarWithInvalidLengthException() throws InvalidLenghtException {
+	public void testAddCarWithInvalidLengthException()
+			throws InvalidLenghtException {
 		Car car = new Car();
-			car.setMake("Alfa Romeo Alfa Romeo Alfa Romeo");
-			car.setModel("159");
-			carDAOImpl.addCar(car);
+		car.setMake("Alfa Romeo Alfa Romeo Alfa Romeo");
+		car.setModel("159");
+		carDAOImpl.addCar(car);
 	}
 
 	@Ignore
@@ -90,25 +102,26 @@ public class testCarDAOImpl {
 	@Test
 	public void testUpdateCar() {
 		Car car = new Car();
-		car.setYear(2018);
+		try {
+			car.setYear(2018);
+		} catch (InvalidYearFormat e1) {
+			e1.printStackTrace();
+		}
 		try {
 			car.setMake("Alfa Romeo");
 			car.setModel("Giulia");
 		} catch (InvalidLenghtException e) {
 		}
 
-		/*
-		 * I don't like the fact I have to setId to the car shouldn't addCar do
-		 * this? And it is still lacking error handling what if there is a
-		 * mistake when adding to DB? there should be exeptions and notification
-		 * that car was not added
-		 */
-
 		car.setId(carDAOImpl.addCar(car));
 
 		System.out.println("Car: " + car);
 
-		car.setYear(2017);
+		try {
+			car.setYear(2017);
+		} catch (InvalidYearFormat e) {
+			e.printStackTrace();
+		}
 		carDAOImpl.updateCar(car);
 
 		System.out
@@ -119,7 +132,11 @@ public class testCarDAOImpl {
 	@Test
 	public void testDeleteCar() {
 		Car car = new Car();
-		car.setYear(2013);
+		try {
+			car.setYear(2013);
+		} catch (InvalidYearFormat e1) {
+			e1.printStackTrace();
+		}
 		try {
 			car.setMake("Alfa Romeo");
 			car.setModel("Mito");
@@ -159,10 +176,10 @@ public class testCarDAOImpl {
 
 	@Test
 	public void testSelectCarsByYear() {
-		int Year2004 = 2004;
-		List<Car> foundCars2004 = carDAOImpl.selectCarsByYear(Year2004);
+		int Year = 2009;
+		List<Car> foundCars2004 = carDAOImpl.selectCarsByYear(Year);
 
-		System.out.println("Number of found cars of year 2004: "
+		System.out.println("Number of found cars of year:  " + Year
 				+ foundCars2004.size());
 	}
 

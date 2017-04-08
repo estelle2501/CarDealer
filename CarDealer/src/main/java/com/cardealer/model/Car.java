@@ -2,9 +2,9 @@ package com.cardealer.model;
 
 public class Car {
 
-	private static final int MAX_LENGTH_20= 20;
+	private static final int MAX_LENGTH_20 = 20;
 	private static final int MAX_LENGTH_10 = 10;
-	
+
 	private int id;
 	private String make;
 	private String model;
@@ -39,18 +39,24 @@ public class Car {
 		return year;
 	}
 
-	public void setYear(int year) {
-		this.year = year;
+	public void setYear(int year) throws InvalidYearFormat {
+		String yearString = "" + year;
+		if (yearString.matches("[1-9][0-9][0-9][0-9]")) {
+			this.year = year;
+		} else {
+			throw new InvalidYearFormat();
+		}
+
 	}
 
 	public String getFuel() {
 		return fuel;
 	}
 
-	public void setFuel(String fuel) throws InvalidLenghtException{
-		if(fuel.length() <= MAX_LENGTH_10){
-			this.fuel = fuel;			
-		}else{
+	public void setFuel(String fuel) throws InvalidLenghtException {
+		if (fuel.length() <= MAX_LENGTH_10) {
+			this.fuel = fuel;
+		} else {
 			throw new InvalidLenghtException("fuel");
 		}
 	}
@@ -67,10 +73,10 @@ public class Car {
 		return gearbox;
 	}
 
-	public void setGearbox(String gearbox) throws InvalidLenghtException{
-		if(gearbox.length() <= MAX_LENGTH_10){
-			this.gearbox = gearbox;			
-		}else{
+	public void setGearbox(String gearbox) throws InvalidLenghtException {
+		if (gearbox.length() <= MAX_LENGTH_10) {
+			this.gearbox = gearbox;
+		} else {
 			throw new InvalidLenghtException("gearbox");
 		}
 	}
@@ -79,10 +85,10 @@ public class Car {
 		return color;
 	}
 
-	public void setColor(String color) throws InvalidLenghtException{
-		if (color.length() <= MAX_LENGTH_20){
-			this.color = color;			
-		}else{
+	public void setColor(String color) throws InvalidLenghtException {
+		if (color.length() <= MAX_LENGTH_20) {
+			this.color = color;
+		} else {
 			throw new InvalidLenghtException("color");
 		}
 	}
@@ -99,10 +105,10 @@ public class Car {
 		return model;
 	}
 
-	public void setModel(String model) throws InvalidLenghtException{
-		if(model.length() <= MAX_LENGTH_20){
-			this.model = model;			
-		}else{
+	public void setModel(String model) throws InvalidLenghtException {
+		if (model.length() <= MAX_LENGTH_20) {
+			this.model = model;
+		} else {
 			throw new InvalidLenghtException("model");
 		}
 	}
