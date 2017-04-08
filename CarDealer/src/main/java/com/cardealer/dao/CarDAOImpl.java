@@ -29,8 +29,9 @@ import java.util.List;
 import java.util.concurrent.locks.StampedLock;
 
 import com.cardealer.model.Car;
+import com.cardealer.model.InvalidKilometerRangeException;
 import com.cardealer.model.InvalidLenghtException;
-import com.cardealer.model.InvalidYearFormat;
+import com.cardealer.model.InvalidYearFormatException;
 
 public class CarDAOImpl implements CarDAO {
 
@@ -145,7 +146,9 @@ public class CarDAOImpl implements CarDAO {
 			System.out.println(ex.getMessage());
 		} catch (InvalidLenghtException e) {
 			e.printStackTrace();
-		} catch (InvalidYearFormat e) {
+		} catch (InvalidYearFormatException e) {
+			e.printStackTrace();
+		} catch (InvalidKilometerRangeException e) {
 			e.printStackTrace();
 		}
 
@@ -196,9 +199,11 @@ public class CarDAOImpl implements CarDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (InvalidLenghtException e) {
+		} catch (InvalidLenghtException e ) {
 			e.printStackTrace();
-		} catch (InvalidYearFormat e) {
+		} catch (InvalidYearFormatException e) {
+			e.printStackTrace();
+		} catch (InvalidKilometerRangeException e) {
 			e.printStackTrace();
 		}
 
@@ -237,7 +242,9 @@ public class CarDAOImpl implements CarDAO {
 			e.printStackTrace();
 		} catch (InvalidLenghtException e) {
 			e.printStackTrace();
-		} catch (InvalidYearFormat e) {
+		} catch (InvalidYearFormatException e) {
+			e.printStackTrace();
+		} catch (InvalidKilometerRangeException e) {
 			e.printStackTrace();
 		}
 

@@ -9,8 +9,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.cardealer.model.Car;
+import com.cardealer.model.InvalidKilometerRangeException;
 import com.cardealer.model.InvalidLenghtException;
-import com.cardealer.model.InvalidYearFormat;
+import com.cardealer.model.InvalidYearFormatException;
 
 public class CSVAdapter {
 
@@ -32,7 +33,8 @@ public class CSVAdapter {
 
 	}
 
-	public static List<Car> readCarsFromCSV() throws InvalidLenghtException, InvalidYearFormat {
+	public static List<Car> readCarsFromCSV() throws InvalidLenghtException,
+			InvalidYearFormatException, NumberFormatException, InvalidKilometerRangeException {
 
 		List<Car> carsList = new ArrayList<>();
 

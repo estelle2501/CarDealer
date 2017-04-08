@@ -4,6 +4,7 @@ public class Car {
 
 	private static final int MAX_LENGTH_20 = 20;
 	private static final int MAX_LENGTH_10 = 10;
+	private static final int MAX_KILOMETER_RANGE = 9999999;
 
 	private int id;
 	private String make;
@@ -39,12 +40,12 @@ public class Car {
 		return year;
 	}
 
-	public void setYear(int year) throws InvalidYearFormat {
+	public void setYear(int year) throws InvalidYearFormatException {
 		String yearString = "" + year;
 		if (yearString.matches("[1-9][0-9][0-9][0-9]")) {
 			this.year = year;
 		} else {
-			throw new InvalidYearFormat();
+			throw new InvalidYearFormatException();
 		}
 
 	}
@@ -97,8 +98,12 @@ public class Car {
 		return kilometer;
 	}
 
-	public void setKilometer(int kilometer) {
-		this.kilometer = kilometer;
+	public void setKilometer(int kilometer) throws InvalidKilometerRangeException {
+		if(kilometer <= MAX_KILOMETER_RANGE){
+			this.kilometer = kilometer;			
+		}else{
+			throw new InvalidKilometerRangeException();
+		}
 	}
 
 	public String getModel() {

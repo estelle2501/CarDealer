@@ -1,10 +1,12 @@
 package com.cardealer.service;
 
+import com.cardealer.model.InvalidKilometerRangeException;
 import com.cardealer.model.InvalidLenghtException;
-import com.cardealer.model.InvalidYearFormat;
+import com.cardealer.model.InvalidYearFormatException;
 
 public interface CSVService {
-	
-	public void CSVImportCars() throws InvalidLenghtException, InvalidYearFormat;
+
+	public void CSVImportCars() throws InvalidLenghtException,
+			InvalidYearFormatException, NumberFormatException, InvalidKilometerRangeException;
 
 }

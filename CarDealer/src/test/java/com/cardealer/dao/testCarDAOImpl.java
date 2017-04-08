@@ -12,8 +12,9 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import com.cardealer.model.Car;
+import com.cardealer.model.InvalidKilometerRangeException;
 import com.cardealer.model.InvalidLenghtException;
-import com.cardealer.model.InvalidYearFormat;
+import com.cardealer.model.InvalidYearFormatException;
 
 public class testCarDAOImpl {
 
@@ -42,24 +43,24 @@ public class testCarDAOImpl {
 			car.setFuel("diesel");
 			car.setGearbox("manual");
 			car.setColor("red");
+			car.setYear(2009);
+			car.setKilometer(76000);
 		} catch (InvalidLenghtException e) {
 			e.printStackTrace();
-		}
-		try {
-			car.setYear(2009);
-		} catch (InvalidYearFormat e) {
+		} catch (InvalidYearFormatException e) {
+			e.printStackTrace();
+		} catch (InvalidKilometerRangeException e) {
 			e.printStackTrace();
 		}
 		car.setEngine(1.9f);
-		car.setKilometer(76000);
 
 		int id = carDAOImpl.addCar(car);
 		assertNotEquals(0, id);
 
 	}
 
-	@Test(expected = InvalidYearFormat.class)
-	public void testAddCarWithInvalidYearFormat20098() throws InvalidYearFormat {
+	@Test(expected = InvalidYearFormatException.class)
+	public void testAddCarWithInvalidYearFormat20098() throws InvalidYearFormatException {
 		Car car = new Car();
 		car.setYear(20098);
 		try {
@@ -72,8 +73,8 @@ public class testCarDAOImpl {
 		assertEquals(0, id);
 	}
 
-	@Test(expected = InvalidYearFormat.class)
-	public void testAddCarWithInvalidYearFormat123() throws InvalidYearFormat {
+	@Test(expected = InvalidYearFormatException.class)
+	public void testAddCarWithInvalidYearFormat123() throws InvalidYearFormatException {
 		Car car = new Car();
 		car.setYear(123);
 		int id = carDAOImpl.addCar(car);
@@ -88,7 +89,27 @@ public class testCarDAOImpl {
 		car.setModel("159");
 		carDAOImpl.addCar(car);
 	}
+	
+	@Test(expected = InvalidKilometerRangeException.class)
+	public void testAddCarWithInvalidKilometerRangeException10000000()
+			throws InvalidKilometerRangeException, InvalidLenghtException {
+		Car car = new Car();
+		car.setMake("Alfa Romeo");
+		car.setModel("159");
+		car.setKilometer(10000000);
+		carDAOImpl.addCar(car);
+	}
 
+	@Test
+	public void testAddCarWithInvalidKilometerRangeException9999999()
+			throws InvalidKilometerRangeException, InvalidLenghtException {
+		Car car = new Car();
+		car.setMake("Alfa Romeo");
+		car.setModel("159");
+		car.setKilometer(9999999);
+		assertNotEquals(0, carDAOImpl.addCar(car));
+	}	
+	
 	@Ignore
 	@Test
 	public void testGetCarByID() {
@@ -104,7 +125,7 @@ public class testCarDAOImpl {
 		Car car = new Car();
 		try {
 			car.setYear(2018);
-		} catch (InvalidYearFormat e1) {
+		} catch (InvalidYearFormatException e1) {
 			e1.printStackTrace();
 		}
 		try {
@@ -119,7 +140,7 @@ public class testCarDAOImpl {
 
 		try {
 			car.setYear(2017);
-		} catch (InvalidYearFormat e) {
+		} catch (InvalidYearFormatException e) {
 			e.printStackTrace();
 		}
 		carDAOImpl.updateCar(car);
@@ -134,7 +155,7 @@ public class testCarDAOImpl {
 		Car car = new Car();
 		try {
 			car.setYear(2013);
-		} catch (InvalidYearFormat e1) {
+		} catch (InvalidYearFormatException e1) {
 			e1.printStackTrace();
 		}
 		try {

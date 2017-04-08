@@ -1,14 +1,14 @@
 package com.cardealer.model;
 
-public class InvalidYearFormat extends Exception{
+public class InvalidYearFormatException extends Exception{
 
 	private static final long serialVersionUID = 7458978404825375489L;
 	
-	public InvalidYearFormat(){
+	public InvalidYearFormatException(){
         super();
     }
 
-    public InvalidYearFormat(String message){
+    public InvalidYearFormatException(String message){
         super(message);
     }
 
