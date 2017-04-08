@@ -91,22 +91,22 @@ public class testCarDAOImpl {
 	}
 	
 	@Test(expected = InvalidKilometerRangeException.class)
-	public void testAddCarWithInvalidKilometerRangeException10000000()
+	public void testAddCarWithInvalidKilometerRangeException1000000()
 			throws InvalidKilometerRangeException, InvalidLenghtException {
 		Car car = new Car();
 		car.setMake("Alfa Romeo");
 		car.setModel("159");
-		car.setKilometer(10000000);
+		car.setKilometer(1000000);
 		carDAOImpl.addCar(car);
 	}
 
 	@Test
-	public void testAddCarWithInvalidKilometerRangeException9999999()
+	public void testAddCarWithInvalidKilometerRangeException999999()
 			throws InvalidKilometerRangeException, InvalidLenghtException {
 		Car car = new Car();
 		car.setMake("Alfa Romeo");
 		car.setModel("159");
-		car.setKilometer(9999999);
+		car.setKilometer(999999);
 		assertNotEquals(0, carDAOImpl.addCar(car));
 	}	
 	

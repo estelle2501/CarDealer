@@ -4,7 +4,7 @@ public class Car {
 
 	private static final int MAX_LENGTH_20 = 20;
 	private static final int MAX_LENGTH_10 = 10;
-	private static final int MAX_KILOMETER_RANGE = 9999999;
+	private static final int MAX_KILOMETER_RANGE = 999999;
 
 	private int id;
 	private String make;
@@ -66,7 +66,7 @@ public class Car {
 		return engine;
 	}
 
-	public void setEngine(float engine) {
+	public void setEngine(float engine){
 		this.engine = engine;
 	}
 
