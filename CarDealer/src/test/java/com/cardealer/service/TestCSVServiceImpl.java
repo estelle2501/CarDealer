@@ -1,7 +1,5 @@
 package com.cardealer.service;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import com.cardealer.model.InvalidEngineFormatException;

@@ -5,10 +5,7 @@ import static org.junit.Assert.*;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.transaction.xa.XAResource;
-
 import org.junit.Ignore;
-import org.junit.Rule;
 import org.junit.Test;
 
 import com.cardealer.model.Car;
