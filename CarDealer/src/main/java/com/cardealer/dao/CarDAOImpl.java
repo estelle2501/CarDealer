@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.concurrent.locks.StampedLock;
 
 import com.cardealer.model.Car;
+import com.cardealer.model.InvalidLenghtException;
 
 public class CarDAOImpl implements CarDAO {
 
@@ -141,6 +142,8 @@ public class CarDAOImpl implements CarDAO {
 
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
+		} catch (InvalidLenghtException e) {
+			e.printStackTrace();
 		}
 
 		return car;
@@ -190,12 +193,14 @@ public class CarDAOImpl implements CarDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (InvalidLenghtException e) {
+			e.printStackTrace();
 		}
 
 		return foundCarsList;
 	}
 
-	public List<Car> selectCarsByYear(int year) {
+	public List<Car> selectCarsByYear(int year){
 		String SQLSelectModel = "SELECT  id, make, model, year, fuel,"
 				+ " engine, gearbox, color, kilometer "
 				+ "FROM cars WHERE year = ?";
@@ -224,6 +229,8 @@ public class CarDAOImpl implements CarDAO {
 			}
 
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (InvalidLenghtException e) {
 			e.printStackTrace();
 		}
 

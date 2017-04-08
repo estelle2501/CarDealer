@@ -8,9 +8,11 @@ import java.util.List;
 import javax.transaction.xa.XAResource;
 
 import org.junit.Ignore;
+import org.junit.Rule;
 import org.junit.Test;
 
 import com.cardealer.model.Car;
+import com.cardealer.model.InvalidLenghtException;
 
 public class testCarDAOImpl {
 
@@ -28,19 +30,23 @@ public class testCarDAOImpl {
 		}
 		assertEquals(null, ex);
 	}
-	
+
 	@Ignore
 	@Test
 	public void testAddCar() {
 		Car car = new Car();
-		car.setMake("Alfa Romeo");
-		car.setModel("159");
+		try {
+			car.setMake("Alfa Romeo");
+			car.setModel("159");
+			car.setFuel("diesel");
+			car.setGearbox("manual");
+			car.setColor("red");
+		} catch (InvalidLenghtException e) {
+			e.printStackTrace();
+		}
 		car.setYear(2009);
 		car.setEngine(1.9f);
-		car.setFuel("diesel");
-		car.setGearbox("manual");
 		car.setKilometer(76000);
-		car.setColor("red");
 
 		int id = carDAOImpl.addCar(car);
 		assertNotEquals(0, id);
@@ -52,11 +58,23 @@ public class testCarDAOImpl {
 	public void testAddCarWithWrongAttributes() {
 		Car car = new Car();
 		car.setYear(20098);
-		car.setMake("Alfa Romeo");
-		car.setModel("159");
+		try {
+			car.setMake("Alfa Romeo");
+			car.setModel("159");
+		} catch (InvalidLenghtException e) {
+			e.printStackTrace();
+		}
 
 		int id = carDAOImpl.addCar(car);
 		assertEquals(0, id);
+	}
+
+	@Test(expected = InvalidLenghtException.class)
+	public void testAddCarWithInvalidLengthException() throws InvalidLenghtException {
+		Car car = new Car();
+			car.setMake("Alfa Romeo Alfa Romeo Alfa Romeo");
+			car.setModel("159");
+			carDAOImpl.addCar(car);
 	}
 
 	@Ignore
@@ -73,8 +91,11 @@ public class testCarDAOImpl {
 	public void testUpdateCar() {
 		Car car = new Car();
 		car.setYear(2018);
-		car.setMake("Alfa Romeo");
-		car.setModel("Giulia");
+		try {
+			car.setMake("Alfa Romeo");
+			car.setModel("Giulia");
+		} catch (InvalidLenghtException e) {
+		}
 
 		/*
 		 * I don't like the fact I have to setId to the car shouldn't addCar do
@@ -99,8 +120,12 @@ public class testCarDAOImpl {
 	public void testDeleteCar() {
 		Car car = new Car();
 		car.setYear(2013);
-		car.setMake("Alfa Romeo");
-		car.setModel("Mito");
+		try {
+			car.setMake("Alfa Romeo");
+			car.setModel("Mito");
+		} catch (InvalidLenghtException e) {
+			e.printStackTrace();
+		}
 
 		int id = carDAOImpl.addCar(car);
 
@@ -124,14 +149,14 @@ public class testCarDAOImpl {
 
 		System.out.println("Number of found Alfa Romeo Mito: "
 				+ foundCarsMito.size());
-		
+
 		List<Car> foundCarsGiulia = carDAOImpl.selectCarsByModel("Giulia");
 
 		System.out.println("Number of found Alfa Romeo Giulia: "
 				+ foundCarsGiulia.size());
 
 	}
-	
+
 	@Test
 	public void testSelectCarsByYear() {
 		int Year2004 = 2004;
