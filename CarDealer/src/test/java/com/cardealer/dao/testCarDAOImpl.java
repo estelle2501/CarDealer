@@ -59,8 +59,10 @@ public class testCarDAOImpl {
 
 	}
 
+	@Ignore
 	@Test(expected = InvalidYearFormatException.class)
-	public void testAddCarWithInvalidYearFormat20098() throws InvalidYearFormatException {
+	public void testAddCarWithInvalidYearFormat20098()
+			throws InvalidYearFormatException {
 		Car car = new Car();
 		car.setYear(20098);
 		try {
@@ -73,14 +75,17 @@ public class testCarDAOImpl {
 		assertEquals(0, id);
 	}
 
+	@Ignore
 	@Test(expected = InvalidYearFormatException.class)
-	public void testAddCarWithInvalidYearFormat123() throws InvalidYearFormatException {
+	public void testAddCarWithInvalidYearFormat123()
+			throws InvalidYearFormatException {
 		Car car = new Car();
 		car.setYear(123);
 		int id = carDAOImpl.addCar(car);
 		assertEquals(0, id);
 	}
 
+	@Ignore
 	@Test(expected = InvalidLenghtException.class)
 	public void testAddCarWithInvalidLengthException()
 			throws InvalidLenghtException {
@@ -90,6 +95,7 @@ public class testCarDAOImpl {
 		carDAOImpl.addCar(car);
 	}
 	
+	@Ignore
 	@Test(expected = InvalidKilometerRangeException.class)
 	public void testAddCarWithInvalidKilometerRangeException1000000()
 			throws InvalidKilometerRangeException, InvalidLenghtException {
@@ -100,6 +106,7 @@ public class testCarDAOImpl {
 		carDAOImpl.addCar(car);
 	}
 
+	@Ignore
 	@Test
 	public void testAddCarWithInvalidKilometerRangeException999999()
 			throws InvalidKilometerRangeException, InvalidLenghtException {
@@ -108,8 +115,9 @@ public class testCarDAOImpl {
 		car.setModel("159");
 		car.setKilometer(999999);
 		assertNotEquals(0, carDAOImpl.addCar(car));
-	}	
+	}
 	
+	@Ignore
 	@Test(expected = InvalidEngineFormatException.class)
 	public void testAddCarWithInvalidEngineFormat100()
 			throws InvalidKilometerRangeException, InvalidLenghtException,
@@ -118,8 +126,9 @@ public class testCarDAOImpl {
 		car.setMake("Alfa Romeo");
 		car.setModel("159");
 		car.setEngine(100);
-	}	
+	}
 
+	@Ignore
 	@Test
 	public void testAddCarWithValidEngineFormat()
 			throws InvalidKilometerRangeException, InvalidLenghtException,
@@ -129,8 +138,8 @@ public class testCarDAOImpl {
 		car.setModel("159");
 		car.setEngine(1.7f);
 		assertNotEquals(0, carDAOImpl.addCar(car));
-	}		
-	
+	}
+
 	@Ignore
 	@Test
 	public void testGetCarByID() {
@@ -171,6 +180,7 @@ public class testCarDAOImpl {
 
 	}
 
+	@Ignore
 	@Test
 	public void testDeleteCar() {
 		Car car = new Car();
@@ -197,6 +207,7 @@ public class testCarDAOImpl {
 
 	}
 
+	@Ignore
 	@Test
 	public void testSelectCarsByModel() {
 		List<Car> foundCars159 = carDAOImpl.selectCarsByModel("159");
@@ -215,7 +226,8 @@ public class testCarDAOImpl {
 				+ foundCarsGiulia.size());
 
 	}
-
+	
+	@Ignore
 	@Test
 	public void testSelectCarsByYear() {
 		int Year = 2009;
@@ -223,6 +235,14 @@ public class testCarDAOImpl {
 
 		System.out.println("Number of found cars of year:  " + Year
 				+ foundCars2004.size());
+	}
+
+	@Test
+	public void testListCars() {
+		List<Car> listCars = carDAOImpl.listCars();
+		for (Car c : listCars) {
+			System.out.println(c);
+		}
 	}
 
 }

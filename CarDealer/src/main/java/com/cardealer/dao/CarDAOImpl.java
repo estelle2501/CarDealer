@@ -271,7 +271,43 @@ public class CarDAOImpl implements CarDAO {
 
 	@Override
 	public List<Car> listCars() {
-		// TODO Auto-generated method stub
-		return null;
+		String SQLSelectModel = "SELECT  id, make, model, year, fuel,"
+				+ " engine, gearbox, color, kilometer "
+				+ "FROM cars ";
+		List<Car> foundCarsList = new ArrayList<>();
+
+		try (Connection conn = connect();
+				PreparedStatement statement = conn
+						.prepareStatement(SQLSelectModel)) {
+
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				Car car = new Car();
+				car.setId(rs.getInt(CARS_ID));
+				car.setMake(rs.getString(CARS_MAKE));
+				car.setModel(rs.getString(CARS_MODEL));
+				car.setYear(rs.getInt(CARS_YEAR));
+				car.setFuel(rs.getString(CARS_FUEL));
+				car.setEngine(rs.getFloat(CARS_ENGINE));
+				car.setGearbox(rs.getString(CARS_GEARBOX));
+				car.setKilometer(rs.getInt(CARS_KILOMETER));
+
+				foundCarsList.add(car);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (InvalidLenghtException e) {
+			e.printStackTrace();
+		} catch (InvalidYearFormatException e) {
+			e.printStackTrace();
+		} catch (InvalidKilometerRangeException e) {
+			e.printStackTrace();
+		} catch (InvalidEngineFormatException e) {
+			e.printStackTrace();
+		}
+
+		return foundCarsList;
 	}
 }
