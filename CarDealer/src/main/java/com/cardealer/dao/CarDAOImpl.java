@@ -268,4 +268,10 @@ public class CarDAOImpl implements CarDAO {
 		}
 
 	}
+
+	@Override
+	public List<Car> listCars() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

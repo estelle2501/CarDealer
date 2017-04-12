@@ -8,6 +8,7 @@ import com.cardealer.model.InvalidYearFormatException;
 public interface CSVService {
 
 	public void CSVImportCars() throws InvalidLenghtException,
-			InvalidYearFormatException, NumberFormatException, InvalidKilometerRangeException, InvalidEngineFormatException;
+			InvalidYearFormatException, NumberFormatException,
+			InvalidKilometerRangeException, InvalidEngineFormatException;
 
 }
