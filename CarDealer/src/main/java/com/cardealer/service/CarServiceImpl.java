@@ -2,19 +2,22 @@ package com.cardealer.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.cardealer.dao.CarDAO;
 import com.cardealer.model.Car;
 
 public class CarServiceImpl implements CarService {
-	
+
+	@Autowired
 	private CarDAO carDAO;
 
 	public void setCarDAO(CarDAO carDAO){
 		this.carDAO = carDAO;
 	}
 
-	public int addCar(Car c) {
-		return this.carDAO.addCar(c);
+	public void addCar(Car c) {
+		this.carDAO.addCar(c);
 	}
 
 	public void updateCar(Car c) {

@@ -5,7 +5,7 @@ import com.cardealer.model.Car;
 
 public interface CarService {
 	
-	public int addCar (Car c);
+	public void addCar (Car c);
 	public void updateCar (Car c);
 	public Car getCarById (int id);
 	public void deleteCar(int id);
