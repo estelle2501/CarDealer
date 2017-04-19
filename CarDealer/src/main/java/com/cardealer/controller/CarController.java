@@ -1,4 +1,4 @@
-package com.cardealer;
+package com.cardealer.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -50,7 +50,7 @@ public class CarController {
 	public String deleteCar(@PathVariable("id") int id) {
 
 		this.carService.deleteCar(id);
-		return "redirect:/phones";
+		return "redirect:/cars";
 	}
 
 	@RequestMapping("/edit/{id}")
