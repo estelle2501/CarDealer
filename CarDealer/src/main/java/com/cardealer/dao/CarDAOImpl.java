@@ -120,7 +120,7 @@ public class CarDAOImpl implements CarDAO {
 				car.setFuel(rs.getString(CARS_FUEL));
 				car.setEngine(rs.getFloat(CARS_ENGINE));
 				car.setGearbox(rs.getString(CARS_GEARBOX));
-				car.setColor(CARS_COLOR);
+				car.setColor(rs.getString(CARS_COLOR));
 				car.setKilometer(rs.getInt(CARS_KILOMETER));
 			}
 

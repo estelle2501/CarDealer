@@ -16,6 +16,23 @@ public class Car {
 	private String color;
 	private int kilometer;
 
+	public Car() {
+	}
+
+	public Car(Integer carId, String carMake, String carModel, Integer carYear,
+			String carFuel, Float carEngine, String carGearbox,
+			String carColor, Integer carKilometer) {
+		this.id = carId;
+		this.make = carMake;
+		this.model = carModel;
+		this.year = carYear;
+		this.fuel = carFuel;
+		this.engine = carEngine;
+		this.gearbox = carGearbox;
+		this.color = carColor;
+		this.kilometer = carKilometer;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -66,11 +83,11 @@ public class Car {
 		return engine;
 	}
 
-	public void setEngine(float engine) throws InvalidEngineFormatException{
+	public void setEngine(float engine) throws InvalidEngineFormatException {
 		String engineString = "" + engine;
-		if(engineString.matches("[0-9].[0-9]")){
-			this.engine = engine;			
-		}else{
+		if (engineString.matches("[0-9].[0-9]")) {
+			this.engine = engine;
+		} else {
 			throw new InvalidEngineFormatException();
 		}
 	}
@@ -103,10 +120,11 @@ public class Car {
 		return kilometer;
 	}
 
-	public void setKilometer(int kilometer) throws InvalidKilometerRangeException {
-		if(kilometer <= MAX_KILOMETER_RANGE){
-			this.kilometer = kilometer;			
-		}else{
+	public void setKilometer(int kilometer)
+			throws InvalidKilometerRangeException {
+		if (kilometer <= MAX_KILOMETER_RANGE) {
+			this.kilometer = kilometer;
+		} else {
 			throw new InvalidKilometerRangeException();
 		}
 	}
