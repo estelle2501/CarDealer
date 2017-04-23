@@ -10,10 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.cardealer.model.Car;
-import com.cardealer.model.InvalidEngineFormatException;
-import com.cardealer.model.InvalidKilometerRangeException;
-import com.cardealer.model.InvalidLenghtException;
-import com.cardealer.model.InvalidYearFormatException;
 
 public class CarDAOImpl implements CarDAO {
 
@@ -41,11 +37,8 @@ public class CarDAOImpl implements CarDAO {
 
 	public void addCar(Car car) {
 
-		int id = 0;
-
 		try (Connection conn = connect();
-				PreparedStatement statement = conn.prepareStatement(SQLinsert,
-						Statement.RETURN_GENERATED_KEYS)) {
+				PreparedStatement statement = conn.prepareStatement(SQLinsert)) {
 			statement.setString(1, car.getMake());
 			statement.setString(2, car.getModel());
 			statement.setInt(3, car.getYear());
@@ -55,18 +48,7 @@ public class CarDAOImpl implements CarDAO {
 			statement.setString(7, car.getColor());
 			statement.setInt(8, car.getKilometer());
 
-			int affectedRows = statement.executeUpdate();
-
-			if (affectedRows > 0) {
-				// get the ID
-				try (ResultSet rs = statement.getGeneratedKeys()) {
-					if (rs.next()) {
-						id = rs.getInt(1);
-					}
-				} catch (SQLException ex) {
-					System.out.println(ex.getMessage());
-				}
-			}
+			statement.executeUpdate();
 
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
@@ -124,14 +106,6 @@ public class CarDAOImpl implements CarDAO {
 
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
-		} catch (InvalidLenghtException e) {
-			e.printStackTrace();
-		} catch (InvalidYearFormatException e) {
-			e.printStackTrace();
-		} catch (InvalidKilometerRangeException e) {
-			e.printStackTrace();
-		} catch (InvalidEngineFormatException e) {
-			e.printStackTrace();
 		}
 
 		return car;
@@ -181,20 +155,11 @@ public class CarDAOImpl implements CarDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (InvalidLenghtException e ) {
-			e.printStackTrace();
-		} catch (InvalidYearFormatException e) {
-			e.printStackTrace();
-		} catch (InvalidKilometerRangeException e) {
-			e.printStackTrace();
-		} catch (InvalidEngineFormatException e) {
-			e.printStackTrace();
 		}
-
 		return foundCarsList;
 	}
 
-	public List<Car> selectCarsByYear(int year){
+	public List<Car> selectCarsByYear(int year) {
 		String SQLSelectModel = "SELECT  id, make, model, year, fuel,"
 				+ " engine, gearbox, color, kilometer "
 				+ "FROM cars WHERE year = ?";
@@ -224,16 +189,7 @@ public class CarDAOImpl implements CarDAO {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (InvalidLenghtException e) {
-			e.printStackTrace();
-		} catch (InvalidYearFormatException e) {
-			e.printStackTrace();
-		} catch (InvalidKilometerRangeException e) {
-			e.printStackTrace();
-		} catch (InvalidEngineFormatException e) {
-			e.printStackTrace();
 		}
-
 		return foundCarsList;
 	}
 
@@ -270,8 +226,7 @@ public class CarDAOImpl implements CarDAO {
 	@Override
 	public List<Car> listCars() {
 		String SQLSelectModel = "SELECT  id, make, model, year, fuel,"
-				+ " engine, gearbox, color, kilometer "
-				+ "FROM cars ";
+				+ " engine, gearbox, color, kilometer " + "FROM cars ";
 		List<Car> foundCarsList = new ArrayList<>();
 
 		try (Connection conn = connect();
@@ -293,19 +248,9 @@ public class CarDAOImpl implements CarDAO {
 
 				foundCarsList.add(car);
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (InvalidLenghtException e) {
-			e.printStackTrace();
-		} catch (InvalidYearFormatException e) {
-			e.printStackTrace();
-		} catch (InvalidKilometerRangeException e) {
-			e.printStackTrace();
-		} catch (InvalidEngineFormatException e) {
-			e.printStackTrace();
 		}
-
 		return foundCarsList;
 	}
 }

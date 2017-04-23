@@ -2,10 +2,6 @@ package com.cardealer.model;
 
 public class Car {
 
-	private static final int MAX_LENGTH_20 = 20;
-	private static final int MAX_LENGTH_10 = 10;
-	private static final int MAX_KILOMETER_RANGE = 999999;
-
 	private int id;
 	private String make;
 	private String model;
@@ -45,25 +41,16 @@ public class Car {
 		return make;
 	}
 
-	public void setMake(String make) throws InvalidLenghtException {
-		if (make.length() <= MAX_LENGTH_20) {
-			this.make = make;
-		} else {
-			throw new InvalidLenghtException("make");
-		}
+	public void setMake(String make) {
+		this.make = make;
 	}
 
 	public int getYear() {
 		return year;
 	}
 
-	public void setYear(int year) throws InvalidYearFormatException {
-		String yearString = "" + year;
-		if (yearString.matches("[1-9][0-9][0-9][0-9]")) {
-			this.year = year;
-		} else {
-			throw new InvalidYearFormatException();
-		}
+	public void setYear(int year) {
+		this.year = year;
 
 	}
 
@@ -71,74 +58,48 @@ public class Car {
 		return fuel;
 	}
 
-	public void setFuel(String fuel) throws InvalidLenghtException {
-		if (fuel.length() <= MAX_LENGTH_10) {
-			this.fuel = fuel;
-		} else {
-			throw new InvalidLenghtException("fuel");
-		}
+	public void setFuel(String fuel) {
+		this.fuel = fuel;
 	}
 
 	public float getEngine() {
 		return engine;
 	}
 
-	public void setEngine(float engine) throws InvalidEngineFormatException {
-		String engineString = "" + engine;
-		if (engineString.matches("[0-9].[0-9]")) {
-			this.engine = engine;
-		} else {
-			throw new InvalidEngineFormatException();
-		}
+	public void setEngine(float engine) {
+		this.engine = engine;
 	}
 
 	public String getGearbox() {
 		return gearbox;
 	}
 
-	public void setGearbox(String gearbox) throws InvalidLenghtException {
-		if (gearbox.length() <= MAX_LENGTH_10) {
-			this.gearbox = gearbox;
-		} else {
-			throw new InvalidLenghtException("gearbox");
-		}
+	public void setGearbox(String gearbox) {
+		this.gearbox = gearbox;
 	}
 
 	public String getColor() {
 		return color;
 	}
 
-	public void setColor(String color) throws InvalidLenghtException {
-		if (color.length() <= MAX_LENGTH_20) {
-			this.color = color;
-		} else {
-			throw new InvalidLenghtException("color");
-		}
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 	public int getKilometer() {
 		return kilometer;
 	}
 
-	public void setKilometer(int kilometer)
-			throws InvalidKilometerRangeException {
-		if (kilometer <= MAX_KILOMETER_RANGE) {
-			this.kilometer = kilometer;
-		} else {
-			throw new InvalidKilometerRangeException();
-		}
+	public void setKilometer(int kilometer) {
+		this.kilometer = kilometer;
 	}
 
 	public String getModel() {
 		return model;
 	}
 
-	public void setModel(String model) throws InvalidLenghtException {
-		if (model.length() <= MAX_LENGTH_20) {
-			this.model = model;
-		} else {
-			throw new InvalidLenghtException("model");
-		}
+	public void setModel(String model) {
+		this.model = model;
 	}
 
 	@Override
