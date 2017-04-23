@@ -16,20 +16,22 @@ public class CarDAOSpringImpl implements CarDAOSpring {
 			+ " (make, model, year, fuel, engine, gearbox, color, kilometer)"
 			+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-	@Autowired
 	private DataSource dataSource;
-
-	JdbcTemplate jdbcTemplate;
+	private JdbcTemplate jdbcTemplate;
 
 	public void setDataSource(DataSource dataSource) {
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
+		this.dataSource = dataSource;
 	}
 
 	public void addCar(Car car) {
 
-		jdbcTemplate.update(SQLinsert, car.getMake(), car.getModel(),
-				car.getYear(), car.getFuel(), car.getEngine(),
-				car.getGearbox(), car.getColor(), car.getKilometer());
+		jdbcTemplate = new JdbcTemplate(dataSource);
+
+		jdbcTemplate.update(
+				SQLinsert,
+				new Object[] { car.getMake(), car.getModel(), car.getYear(),
+						car.getFuel(), car.getEngine(), car.getGearbox(),
+						car.getColor(), car.getKilometer() });
 
 	}
 
