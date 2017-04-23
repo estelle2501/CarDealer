@@ -10,7 +10,7 @@ import com.cardealer.model.Car;
 public class CarServiceImpl implements CarService {
 
 	@Autowired
-	private CarDAOSpring carDAOSpring;
+	CarDAOSpring carDAOSpring;
 
 	public void setCarDAOSpring(CarDAOSpring carDAOSpring){
 		this.carDAOSpring = carDAOSpring;

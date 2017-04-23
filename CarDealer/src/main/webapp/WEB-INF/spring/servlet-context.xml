@@ -21,10 +21,7 @@
 	</bean>
 
 	<!-- declare beans -->
-	<bean id="carDaoSpring" class="com.cardealer.spring.dao.CarDAOSpringImpl" >
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-
+	<bean id="carDaoSpring" class="com.cardealer.spring.dao.CarDAOSpringImpl" />
 	<bean id="carService" class="com.cardealer.service.CarServiceImpl" />
 
 

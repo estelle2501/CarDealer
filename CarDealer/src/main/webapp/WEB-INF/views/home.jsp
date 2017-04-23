@@ -16,7 +16,7 @@
 <h1>Welcome to CarDealer!</h1>
 <p>
 ${message}<br/>
-<a href="${pageContext.request.contextPath}/cars">Start application</a><br/>
+<a href="${pageContext.request.contextPath}/listCars">Start application</a><br/>
 </p>
 </body>
 </html>

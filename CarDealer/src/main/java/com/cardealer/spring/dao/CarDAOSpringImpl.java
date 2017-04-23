@@ -2,37 +2,38 @@ package com.cardealer.spring.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.cardealer.mapper.CarMapper;
 import com.cardealer.model.Car;
 
 public class CarDAOSpringImpl implements CarDAOSpring {
+
+	// private DataSource dataSource;
+	// private JdbcTemplate jdbcTemplate;
+	//
+	// public void setDataSource(DataSource dataSource) {
+	// this.dataSource = dataSource;
+	// }
+
+	@Autowired
+	DataSource dataSource;
 
 	private String SQLinsert = "INSERT INTO cars"
 			+ " (make, model, year, fuel, engine, gearbox, color, kilometer)"
 			+ " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-	private DataSource dataSource;
-	private JdbcTemplate jdbcTemplate;
-
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
-
 	public void addCar(Car car) {
 
-		jdbcTemplate = new JdbcTemplate(dataSource);
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
 		jdbcTemplate.update(
 				SQLinsert,
 				new Object[] { car.getMake(), car.getModel(), car.getYear(),
 						car.getFuel(), car.getEngine(), car.getGearbox(),
 						car.getColor(), car.getKilometer() });
-
 	}
 
 	public void updateCar(Car car) {
@@ -228,43 +229,16 @@ public class CarDAOSpringImpl implements CarDAOSpring {
 
 	}
 
-	@Override
 	public List<Car> listCars() {
-		String SQLSelectModel = "SELECT  id, make, model, year, fuel,"
-				+ " engine, gearbox, color, kilometer " + "FROM cars ";
 		List<Car> foundCarsList = new ArrayList<>();
+		
+//		String SQLSelect = "SELECT  id, make, model, year, fuel,"
+//				+ " engine, gearbox, color, kilometer " + "FROM cars ";
 
-		// try (Connection conn = connect();
-		// PreparedStatement statement = conn
-		// .prepareStatement(SQLSelectModel)) {
-		//
-		// ResultSet rs = statement.executeQuery();
-		//
-		// while (rs.next()) {
-		// Car car = new Car();
-		// car.setId(rs.getInt(CARS_ID));
-		// car.setMake(rs.getString(CARS_MAKE));
-		// car.setModel(rs.getString(CARS_MODEL));
-		// car.setYear(rs.getInt(CARS_YEAR));
-		// car.setFuel(rs.getString(CARS_FUEL));
-		// car.setEngine(rs.getFloat(CARS_ENGINE));
-		// car.setGearbox(rs.getString(CARS_GEARBOX));
-		// car.setKilometer(rs.getInt(CARS_KILOMETER));
-		//
-		// foundCarsList.add(car);
-		// }
-		//
-		// } catch (SQLException e) {
-		// e.printStackTrace();
-		// } catch (InvalidLenghtException e) {
-		// e.printStackTrace();
-		// } catch (InvalidYearFormatException e) {
-		// e.printStackTrace();
-		// } catch (InvalidKilometerRangeException e) {
-		// e.printStackTrace();
-		// } catch (InvalidEngineFormatException e) {
-		// e.printStackTrace();
-		// }
+		String SQLSelect = "SELECT  * FROM cars ";
+		
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		foundCarsList = jdbcTemplate.query(SQLSelect, new CarMapper());
 
 		return foundCarsList;
 	}
