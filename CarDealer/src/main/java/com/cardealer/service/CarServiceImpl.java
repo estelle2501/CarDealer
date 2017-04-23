@@ -4,48 +4,48 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.cardealer.dao.CarDAO;
+import com.cardealer.spring.dao.CarDAOSpring;
 import com.cardealer.model.Car;
 
 public class CarServiceImpl implements CarService {
 
 	@Autowired
-	private CarDAO carDAO;
+	private CarDAOSpring carDAOSpring;
 
-	public void setCarDAO(CarDAO carDAO){
-		this.carDAO = carDAO;
+	public void setCarDAOSpring(CarDAOSpring carDAOSpring){
+		this.carDAOSpring = carDAOSpring;
 	}
 
 	public void addCar(Car c) {
-		this.carDAO.addCar(c);
+		this.carDAOSpring.addCar(c);
 	}
 
 	public void updateCar(Car c) {
-		this.carDAO.updateCar(c);
+		this.carDAOSpring.updateCar(c);
 	}
 
 	public Car getCarById(int id) {
-		return this.carDAO.getCarById(id);
+		return this.carDAOSpring.getCarById(id);
 	}
 
 	public void deleteCar(int id) {
-		this.carDAO.deleteCar(id);
+		this.carDAOSpring.deleteCar(id);
 	}
 
 	public List<Car> listCars() {
-		return this.carDAO.listCars();
+		return this.carDAOSpring.listCars();
 	}
 
 	public List<Car> selectCarsByModel(String carModel) {
-		return this.carDAO.selectCarsByModel(carModel);
+		return this.carDAOSpring.selectCarsByModel(carModel);
 	}
 
 	public List<Car> selectCarsByYear(int year) {
-		return this.carDAO.selectCarsByYear(year);
+		return this.carDAOSpring.selectCarsByYear(year);
 		}
 
 	public void addCars(List<Car> carsList) {
-		this.carDAO.addCars(carsList);
+		this.carDAOSpring.addCars(carsList);
 	}
 
 }

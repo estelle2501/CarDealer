@@ -116,7 +116,7 @@ margin: 10px 15px 10px 8px;
         <th width="60">Action</th>
 
     </tr>
-    <c:forEach items="${listCars}" var="phone">
+    <c:forEach items="${listCars}" var="car">
         <tr>
             <td>${car.id}</td>
             <td>${car.make}</td>

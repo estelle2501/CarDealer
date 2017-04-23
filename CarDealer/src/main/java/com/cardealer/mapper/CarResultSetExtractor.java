@@ -12,10 +12,10 @@ import com.cardealer.model.InvalidKilometerRangeException;
 import com.cardealer.model.InvalidLenghtException;
 import com.cardealer.model.InvalidYearFormatException;
 
-public class CarResultSetExtractor implements ResultSetExtractor {
+public class CarResultSetExtractor implements ResultSetExtractor<Car> {
 
 	@Override
-	public Object extractData(ResultSet rs) throws SQLException,
+	public Car extractData(ResultSet rs) throws SQLException,
 			DataAccessException {
 		Car car = new Car();
 

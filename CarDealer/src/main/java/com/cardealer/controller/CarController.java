@@ -15,6 +15,7 @@ import com.cardealer.service.CarService;
 @Controller
 public class CarController {
 
+	@Autowired
 	private CarService carService;
 
 	@Autowired(required = true)
