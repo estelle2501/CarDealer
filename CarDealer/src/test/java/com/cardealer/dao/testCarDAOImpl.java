@@ -31,7 +31,7 @@ public class testCarDAOImpl {
 		assertEquals(null, ex);
 	}
 
-	@Ignore
+
 	@Test
 	public void testAddCar() {
 		Car car = new Car();
@@ -54,8 +54,7 @@ public class testCarDAOImpl {
 			e.printStackTrace();
 		}
 
-		int id = carDAOImpl.addCar(car);
-		assertNotEquals(0, id);
+		carDAOImpl.addCar(car);
 
 	}
 
@@ -71,8 +70,7 @@ public class testCarDAOImpl {
 		} catch (InvalidLenghtException e) {
 			e.printStackTrace();
 		}
-		int id = carDAOImpl.addCar(car);
-		assertEquals(0, id);
+		carDAOImpl.addCar(car);
 	}
 
 	@Ignore
@@ -81,8 +79,7 @@ public class testCarDAOImpl {
 			throws InvalidYearFormatException {
 		Car car = new Car();
 		car.setYear(123);
-		int id = carDAOImpl.addCar(car);
-		assertEquals(0, id);
+		carDAOImpl.addCar(car);
 	}
 
 	@Ignore
@@ -94,7 +91,7 @@ public class testCarDAOImpl {
 		car.setModel("159");
 		carDAOImpl.addCar(car);
 	}
-	
+
 	@Ignore
 	@Test(expected = InvalidKilometerRangeException.class)
 	public void testAddCarWithInvalidKilometerRangeException1000000()
@@ -114,9 +111,9 @@ public class testCarDAOImpl {
 		car.setMake("Alfa Romeo");
 		car.setModel("159");
 		car.setKilometer(999999);
-		assertNotEquals(0, carDAOImpl.addCar(car));
+		carDAOImpl.addCar(car);
 	}
-	
+
 	@Ignore
 	@Test(expected = InvalidEngineFormatException.class)
 	public void testAddCarWithInvalidEngineFormat100()
@@ -137,7 +134,7 @@ public class testCarDAOImpl {
 		car.setMake("Alfa Romeo");
 		car.setModel("159");
 		car.setEngine(1.7f);
-		assertNotEquals(0, carDAOImpl.addCar(car));
+		carDAOImpl.addCar(car);
 	}
 
 	@Ignore
@@ -196,7 +193,7 @@ public class testCarDAOImpl {
 			e.printStackTrace();
 		}
 
-		int id = carDAOImpl.addCar(car);
+		carDAOImpl.addCar(car);
 
 		car.setId(id);
 
@@ -226,7 +223,7 @@ public class testCarDAOImpl {
 				+ foundCarsGiulia.size());
 
 	}
-	
+
 	@Ignore
 	@Test
 	public void testSelectCarsByYear() {
@@ -237,6 +234,7 @@ public class testCarDAOImpl {
 				+ foundCars2004.size());
 	}
 
+	@Ignore
 	@Test
 	public void testListCars() {
 		List<Car> listCars = carDAOImpl.listCars();
