@@ -24,7 +24,6 @@
 	<bean id="carDaoSpring" class="com.cardealer.spring.dao.CarDAOSpringImpl" />
 	<bean id="carService" class="com.cardealer.service.CarServiceImpl" />
 
-
 	<!-- declare datasource bean -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

@@ -17,13 +17,18 @@ public class CarController {
 	@Autowired
 	CarService carService;
 
-	@RequestMapping(value = "/add")
-	public String addCar(@ModelAttribute Car car) {
+	@RequestMapping("/add")
+	public ModelAndView addCar (@ModelAttribute Car car){
+		return new ModelAndView("add", "car", car);
+	}
+	
+	@RequestMapping("/insert")  
+	 public String insertCar(@ModelAttribute Car car) {  
 		if (car != null) {
 			carService.addCar(car);
-		}
-		return "redirect:/add";
-	}
+		} 
+	  return "redirect:/listCars";  
+	 }  
 
 	@RequestMapping("/listCars")
 	public ModelAndView listCars() {

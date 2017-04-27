@@ -33,7 +33,7 @@ td {
 	<center>
 		<br /> <br /> <br /> <b>Add a car </b> <br /> <br />
 		<div>
-			<form:form method="post" action="/add" modelAttribute="car">
+		<form:form method="post" action="/insert" modelAttribute="car">	
 				<table>
 					<tr>
 						<td>Model :</td>
