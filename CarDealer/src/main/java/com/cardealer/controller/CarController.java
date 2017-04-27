@@ -1,12 +1,12 @@
 package com.cardealer.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cardealer.model.Car;
 import com.cardealer.service.CarService;
@@ -17,23 +17,23 @@ public class CarController {
 	@Autowired
 	CarService carService;
 
-	@RequestMapping("/add")
-	public ModelAndView addCar (@ModelAttribute Car car){
-		return new ModelAndView("add", "car", car);
-	}
-	
-	@RequestMapping("/insert")  
-	 public String insertCar(@ModelAttribute Car car) {  
-		if (car != null) {
-			carService.addCar(car);
-		} 
-	  return "redirect:/listCars";  
-	 }  
-
 	@RequestMapping("/listCars")
-	public ModelAndView listCars() {
-		List<Car> carList = carService.listCars();
-		return new ModelAndView("carList", "carList", carList);
+	public String listCars(Model model) {
+		model.addAttribute("carList", carService.listCars());
+		return "carList";
+	}
+
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public String AddCar(@ModelAttribute Car car) {
+		return "add";
+	}
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String AddCar(@ModelAttribute("car") Car car, BindingResult result,
+			Model model) {
+		model.addAttribute("car", car);
+		carService.addCar(car);
+		return "redirect:/listCars";
 	}
 
 }
