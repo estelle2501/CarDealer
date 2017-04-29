@@ -63,7 +63,7 @@ td {
 					<td>${carList.gearbox}</td>
 					<td>${carList.color}</td>
 					<td>${carList.kilometer}</td>
-					<td><a href="edit?id=${carList.id}">Edit</a></td>
+					<td><a href="${pageContext.request.contextPath}/edit/${carList.id}">Edit</a></td>
 					<td><a href="${pageContext.request.contextPath}/delete/${carList.id}">Delete</a></td>
 				</tr>
 			</c:forEach>
