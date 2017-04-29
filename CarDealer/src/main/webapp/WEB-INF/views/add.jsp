@@ -41,12 +41,11 @@ td {
 			<br />
 			<table>
 				<tr>
-					<td>Model :</td>
-					<td><form:input path="model" /></td>
-				</tr>
-				<tr>
 					<td>Make :</td>
 					<td><form:input path="make" /></td>
+				<tr>
+					<td>Model :</td>
+					<td><form:input path="model" /></td>
 				</tr>
 				<tr>
 					<td>Year :</td>
@@ -57,13 +56,30 @@ td {
 					<td><form:input path="fuel" /></td>
 				</tr>
 				<tr>
+					<td>Engine :</td>
+					<td><form:input path="engine" /></td>
+				</tr>
+				<tr>
+					<td>Gearbox :</td>
+					<td><form:input path="gearbox" /></td>
+				</tr>
+				<tr>
+					<td>Color :</td>
+					<td><form:input path="color" /></td>
+				</tr>
+				<tr>
+					<td>Kilometer :</td>
+					<td><form:input path="kilometer" /></td>
+				</tr>
+				<tr>
 					<td></td>
 					<td><input type="submit" value="Save" /></td>
 				</tr>
 				<tr>
 
-					<td colspan="2"><a href="${pageContext.request.contextPath}/listCars">Click Here to See Car
-							List</a></td>
+					<td colspan="2"><a
+						href="${pageContext.request.contextPath}/listCars">Click Here
+							to See Car List</a></td>
 				</tr>
 			</table>
 		</form:form>

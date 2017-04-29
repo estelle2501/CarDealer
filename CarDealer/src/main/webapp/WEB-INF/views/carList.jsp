@@ -29,7 +29,7 @@ td {
 	font-size: 18px;
 	color: white;
 	font: bold;
-	background-color: orange;
+	background-color: blue;
 	border: thick;
 }
 </style>
