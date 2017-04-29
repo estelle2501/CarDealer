@@ -62,7 +62,7 @@ td {
 				</tr>
 				<tr>
 
-					<td colspan="2"><a href="/listCars">Click Here to See Car
+					<td colspan="2"><a href="${pageContext.request.contextPath}/listCars">Click Here to See Car
 							List</a></td>
 				</tr>
 			</table>
