@@ -2,9 +2,12 @@ package com.cardealer.spring.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 
 import com.cardealer.mapper.CarMapper;
 import com.cardealer.model.Car;
@@ -78,7 +81,11 @@ public class CarDAOSpringImpl implements CarDAOSpring {
 		return foundCarsList;
 	}
 
-	public void deleteCar(int id) {
+	public void deleteCar(int id) {	
+		String SQLDelete = "DELETE FROM cars WHERE id=?";
+		
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		jdbcTemplate.update(SQLDelete, id);	
 
 	}
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,16 +25,22 @@ public class CarController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String AddCar(@ModelAttribute Car car) {
+	public String showAddCar(@ModelAttribute Car car) {
 		return "add";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String AddCar(@ModelAttribute("car") Car car, BindingResult result,
+	public String addCar(@ModelAttribute("car") Car car, BindingResult result,
 			Model model) {
 		model.addAttribute("car", car);
 		carService.addCar(car);
 		return "redirect:/listCars";
+	}
+	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String deleteCar(@PathVariable("id") int id  ) {
+		carService.deleteCar(id);
+		return  "redirect:/listCars";
 	}
 
 }
