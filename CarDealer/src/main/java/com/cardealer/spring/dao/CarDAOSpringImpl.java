@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 
 import com.cardealer.mapper.CarMapper;
 import com.cardealer.model.Car;
@@ -37,15 +36,21 @@ public class CarDAOSpringImpl implements CarDAOSpring {
 				+ "SET make =?, model = ?, year = ? , fuel = ?, engine = ?, "
 				+ "gearbox = ?, color = ?, kilometer = ? " + "WHERE id = ?";
 
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+
+		jdbcTemplate.update(
+				SQLupdate,
+				new Object[] { car.getMake(), car.getModel(), car.getYear(),
+						car.getFuel(), car.getEngine(), car.getGearbox(),
+						car.getColor(), car.getKilometer(), car.getId() });
 	}
 
 	public Car getCarById(int id) {
-		String SQLgetCar = "SELECT id, make, model, year, fuel, "
-				+ " engine, gearbox, color, kilometer " + "FROM cars "
-				+ "WHERE id = ?";
-		Car car = new Car();
+		String SQLgetCar = "SELECT * FROM cars " + "WHERE id=?";
 
-		return car;
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		return jdbcTemplate.queryForObject(SQLgetCar, new Object[] { id },
+				new CarMapper());
 	}
 
 	public List<Car> selectCarsByModel(String carModel) {
@@ -81,11 +86,11 @@ public class CarDAOSpringImpl implements CarDAOSpring {
 		return foundCarsList;
 	}
 
-	public void deleteCar(int id) {	
+	public void deleteCar(int id) {
 		String SQLDelete = "DELETE FROM cars WHERE id=?";
-		
+
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		jdbcTemplate.update(SQLDelete, id);	
+		jdbcTemplate.update(SQLDelete, id);
 
 	}
 }
