@@ -9,6 +9,10 @@
     http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
 	<http auto-config="true" use-expressions="true">
+
+		<!-- access denied page -->
+		<access-denied-handler ref="customAccessDeniedHandler" />
+
 		<intercept-url pattern="/" access="hasRole('USER')" />
 		<intercept-url pattern="/home" access="hasRole('USER')" />
 		<intercept-url pattern="/add" access="hasRole('USER')" />
@@ -16,9 +20,6 @@
 			access="hasRole('USER') and hasRole('ADMIN')" />
 		<intercept-url pattern="/delete/{id}"
 			access="hasRole('USER') and hasRole('ADMIN')" />
-
-		<!-- access denied page -->
-		<access-denied-handler error-page="/403" />
 
 		<form-login login-page="/login" default-target-url="/home"
 			authentication-failure-url="/login?error" username-parameter="username"
@@ -36,5 +37,8 @@
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
+
+	<beans:bean name="customAccessDeniedHandler"
+		class="com.cardealer.controller.CustomAccessDeniedHandler" />
 
 </beans:beans>
