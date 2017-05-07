@@ -37,7 +37,7 @@
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-	<h1>Spring Security Login Form (Database Authentication)</h1>
+	<h1>CarDealer</h1>
 
 	<div id="login-box">
 
@@ -51,7 +51,7 @@
 		</c:if>
 
 		<form name='loginForm'
-			action="<c:url value='/j_spring_security_check' />" method='POST'>
+			action="${loginUrl}" method='POST'>
 
 			<table>
 				<tr>
