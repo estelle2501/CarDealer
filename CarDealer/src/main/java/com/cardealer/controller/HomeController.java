@@ -18,6 +18,11 @@ public class HomeController {
 		return new ModelAndView("home");
 	}
 	
+	@RequestMapping(value = "/home" )
+	public ModelAndView mainHomePage() {
+		return new ModelAndView("home");
+	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView login(
 			@RequestParam(value = "error", required = false) String error,

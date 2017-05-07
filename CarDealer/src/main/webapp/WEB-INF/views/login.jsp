@@ -37,11 +37,9 @@
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-	<h1>CarDealer</h1>
-
 	<div id="login-box">
 
-		<h2>Login with Username and Password</h2>
+		<h2>Login to CarDealer</h2>
 
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
