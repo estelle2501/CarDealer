@@ -9,14 +9,13 @@
     http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
 	<http auto-config="true" use-expressions="true">
-		<intercept-url pattern="/"
-			access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/home"
-			access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/add"
-			access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/edit" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/delete" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/" access="hasRole('USER')" />
+		<intercept-url pattern="/home" access="hasRole('USER')" />
+		<intercept-url pattern="/add" access="hasRole('USER')" />
+		<intercept-url pattern="/edit/{id}"
+			access="hasRole('USER') and hasRole('ADMIN')" />
+		<intercept-url pattern="/delete/{id}"
+			access="hasRole('USER') and hasRole('ADMIN')" />
 
 		<!-- access denied page -->
 		<access-denied-handler error-page="/403" />
@@ -26,7 +25,7 @@
 			password-parameter="password" />
 		<logout logout-success-url="/login?logout" />
 		<!-- enable csrf protection -->
-		<csrf/>
+		<csrf />
 	</http>
 
 	<authentication-manager>
