@@ -83,8 +83,7 @@ td {
 				<tr>
 
 					<td colspan="2"><a
-						href="${pageContext.request.contextPath}/listCars">Click Here
-							to See Car List</a></td>
+						href="${pageContext.request.contextPath}/listCars">Cancel</a></td>
 				</tr>
 			</table>
 		</form:form>

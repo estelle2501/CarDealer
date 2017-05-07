@@ -33,13 +33,18 @@ td {
 	<br />
 	<br />
 	<br />
-	<b>Add new car </b>
+	<b>Are you sure you want to delete this car?</b>
 	<br />
 	<br />
 	<div>
-		<form:form method="post" action="add" modelAttribute="car">
+		<form:form method="post" action="delete" modelAttribute="car">
 			<br />
 			<table>
+				<tr>
+					<td></td>
+					<td><form:hidden path="id" /></td>
+				</tr>
+				<tr>
 				<tr>
 					<td>Make :</td>
 					<td><form:input path="make" /></td>
@@ -73,12 +78,12 @@ td {
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="submit" value="Save" /></td>
+					<td><input type="submit" value="Yes, delete this car" /></td>
 				</tr>
 				<tr>
 
 					<td colspan="2"><a
-						href="${pageContext.request.contextPath}/listCars">Cancel</a></td>
+						href="${pageContext.request.contextPath}/listCars">No, do not delete this car</a></td>
 				</tr>
 			</table>
 		</form:form>

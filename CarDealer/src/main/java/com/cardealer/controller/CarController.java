@@ -38,8 +38,16 @@ public class CarController {
 	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String deleteCar(@PathVariable("id") int id  ) {
-		carService.deleteCar(id);
+	public String showDeleteCar(@PathVariable("id") int id, Model model  ) {
+		model.addAttribute("car", carService.getCarById(id));	
+		return  "delete";
+	}
+	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	public String deleteCar(@ModelAttribute("car") Car car, BindingResult result,
+			Model model) {
+		model.addAttribute("car", car);
+		carService.deleteCar(car.getId());
 		return  "redirect:/listCars";
 	}
 
