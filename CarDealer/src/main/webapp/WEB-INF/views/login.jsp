@@ -1,9 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page session="true"%>
-<html>
-<head>
+
 <jsp:include page="../templates/header.jsp"></jsp:include>
-</head>
+
 <body onload='document.loginForm.username.focus();'>
 
 	<div id="login-box">
@@ -41,5 +40,3 @@
 	</div>
 
 	<jsp:include page="../templates/footer.jsp"></jsp:include>
-</body>
-</html>

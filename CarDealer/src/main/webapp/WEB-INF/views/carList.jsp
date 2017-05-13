@@ -1,12 +1,6 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <jsp:include page="../templates/header.jsp"></jsp:include>
-</head>
 
 <body>
 	<div class="container"></div>
@@ -60,6 +54,3 @@
 	</p>
 
 	<jsp:include page="../templates/footer.jsp"></jsp:include>
-
-</body>
-</html>
