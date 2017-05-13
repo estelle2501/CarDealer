@@ -15,6 +15,7 @@
 	<!-- declaring base package -->
 	<context:component-scan base-package="com.cardealer" />
 	<mvc:annotation-driven />
+    <mvc:resources mapping="/images/**" location="/WEB-INF/images/" />
 
 	<!-- adding view resolver to show jsp's on browser -->
 	<bean id="viewResolver"

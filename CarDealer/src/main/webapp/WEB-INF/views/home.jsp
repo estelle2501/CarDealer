@@ -1,15 +1,22 @@
 <jsp:include page="../templates/header.jsp"></jsp:include>
+
 <body>
-	<!-- 	<h1>Welcome to CarDealer!</h1> -->
-	<div class=container>Welcome to CarDealer!</div>
-	<p>
-		${message}<br /> <a
-			href="${pageContext.request.contextPath}/listCars">Start
-			application</a><br />
-	</p>
-	<p>
-		${message}<br /> <a
-			href="${pageContext.request.contextPath}/login?logout">Log out</a><br />
-	</p>
+	<div class=container>
+		<div class=row>
+			<div class="center-block"></div>
+			<h1>Welcome to CarDealer!</h1>
+		</div>
+		<div class=row>
+			<img src="/CarDealer/images/alfa.jpg" class="center-block"  />
+		</div>
+		<div class=row>
+			<button type="button" class="btn btn-primary btn-lg btn-block"
+				onclick="location.href='${pageContext.request.contextPath}/listCars'">Start
+				application</button>
+			<button type="button" class="btn btn-default btn-lg btn-block"
+				onclick="location.href='${pageContext.request.contextPath}/login?logout'">Log
+				out</button>
+		</div>
+	</div>
 
 	<jsp:include page="../templates/footer.jsp"></jsp:include>
