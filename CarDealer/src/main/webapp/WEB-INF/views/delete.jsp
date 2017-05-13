@@ -5,29 +5,6 @@
 <html>
 <head>
 <title>Car Dealer</title>
-<style>
-body {
-	font-size: 20px;
-	color: teal;
-	font-family: Calibri;
-}
-
-td {
-	font-size: 15px;
-	color: black;
-	width: 100px;
-	height: 22px;
-	text-align: left;
-}
-
-.heading {
-	font-size: 18px;
-	color: white;
-	font: bold;
-	background-color: orange;
-	border: thick;
-}
-</style>
 </head>
 <body>
 	<br />
@@ -83,7 +60,8 @@ td {
 				<tr>
 
 					<td colspan="2"><a
-						href="${pageContext.request.contextPath}/listCars">No, do not delete this car</a></td>
+						href="${pageContext.request.contextPath}/listCars">No, do not
+							delete this car</a></td>
 				</tr>
 			</table>
 		</form:form>

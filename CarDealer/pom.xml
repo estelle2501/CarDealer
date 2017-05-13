@@ -13,7 +13,7 @@
 		<spring.version>4.0.3.RELEASE</spring.version>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
 		<cglib.version>2.2.2</cglib.version>
-		<spring.security.version>4.0.3.RELEASE</spring.security.version>		
+		<spring.security.version>4.0.3.RELEASE</spring.security.version>
 	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
@@ -33,13 +33,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
-<!-- 			<exclusions> -->
-<!-- 				Exclude Commons Logging in favor of SLF4j -->
-<!-- 				<exclusion> -->
-<!-- 					<groupId>commons-logging</groupId> -->
-<!-- 					<artifactId>commons-logging</artifactId> -->
-<!-- 				</exclusion> -->
-<!-- 			</exclusions> -->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>

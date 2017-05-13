@@ -1,55 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Car Dealer</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE = edge">
+<meta name="viewport" content="width = device-width, initial-scale = 1">
+
+<title>CarDealer</title>
+
+<!-- Bootstrap -->
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
+
 <body>
-	<style>
-body {
-	font-size: 20px;
-	color: teal;
-	font-family: Calibri;
-}
+	<div class="container"></div>
+	<h1>Car List</h1>
 
-td {
-	font-size: 15px;
-	color: black;
-	width: 100px;
-	height: 22px;
-	text-align: center;
-}
-
-.heading {
-	font-size: 18px;
-	color: white;
-	font: bold;
-	background-color: blue;
-	border: thick;
-}
-</style>
-</head>
-<body>
-	<center>
-		<br /> <br /> <br /> <b>Car List</b><br /> <br />
-
-		<table border="1">
+	<table class="table table-bordered table-striped">
+		<thead>
 			<tr>
-				<td class="heading">Id</td>
-				<td class="heading">Make</td>
-				<td class="heading">Model</td>
-				<td class="heading">Year</td>
-				<td class="heading">Fuel</td>
-				<td class="heading">Engine</td>
-				<td class="heading">Gearbox</td>
-				<td class="heading">Color</td>
-				<td class="heading">Kilometer</td>
+				<th>#</th>
+				<th>Make</th>
+				<th>Model</th>
+				<th>Year</th>
+				<th>Fuel</th>
+				<th>Engine</th>
+				<th>Color</th>
+				<th>Fuel</th>
+				<th>Kilometer</th>
 			</tr>
+		</thead>
+		<tbody>
 			<c:forEach var="carList" items="${carList}">
 				<tr>
 					<td>${carList.id}</td>
@@ -61,21 +47,34 @@ td {
 					<td>${carList.gearbox}</td>
 					<td>${carList.color}</td>
 					<td>${carList.kilometer}</td>
-					<td><a
-						href="${pageContext.request.contextPath}/edit/${carList.id}">Edit</a></td>
-					<td><a
-						href="${pageContext.request.contextPath}/delete/${carList.id}">Delete</a></td>
+					<spring:url value="/edit/${carList.id}" var="editURL" />
+					<td><button type="button" class="btn btn-info"
+							onclick="location.href='${editURL}'">Edit</button>
+					<td />
+					<spring:url value="/delete/${carList.id}" var="deleteURL" />
+					<td><button type="button" class="btn btn-danger"
+							onclick="location.href='${deleteURL}'">Delete</button>
+					<td />
 				</tr>
 			</c:forEach>
-			<tr>
-				<td colspan="7"><a
-					href="${pageContext.request.contextPath}/add">Add New Car</a></td>
-			</tr>
-		</table>
-		<p>
-			${message}<a href="${pageContext.request.contextPath}/">Get back
-				to home page</a><br />
-		</p>
-	</center>
+		</tbody>
+		<tfoot>
+			<td><a href="${pageContext.request.contextPath}/add">Add New
+					Car</a></td>
+		</tfoot>
+	</table>
+	<p>
+		${message}<a href="${pageContext.request.contextPath}/">Get back
+			to home page</a><br />
+	</p>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>
