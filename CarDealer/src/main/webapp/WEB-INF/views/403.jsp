@@ -1,5 +1,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
+<head>
+<jsp:include page="../templates/header.jsp"></jsp:include>
+</head>
 <body>
 	<h1>HTTP Status 403 - Access is denied</h1>
 
@@ -16,7 +19,9 @@
 	</c:choose>
 
 	Click
-	<a href="${pageContext.request.contextPath}/listCars">here</a> to go back.
-
+	<a href="${pageContext.request.contextPath}/listCars">here</a> to go
+	back.
+	
+	<jsp:include page="../templates/footer.jsp"></jsp:include>
 </body>
 </html>

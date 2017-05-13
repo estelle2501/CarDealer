@@ -5,16 +5,7 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE = edge">
-<meta name="viewport" content="width = device-width, initial-scale = 1">
-
-<title>CarDealer</title>
-
-<!-- Bootstrap -->
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
-	rel="stylesheet">
+<jsp:include page="../templates/header.jsp"></jsp:include>
 </head>
 
 <body>
@@ -68,13 +59,7 @@
 			to home page</a><br />
 	</p>
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script
-		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<jsp:include page="../templates/footer.jsp"></jsp:include>
 
 </body>
 </html>
