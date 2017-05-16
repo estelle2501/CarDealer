@@ -35,21 +35,31 @@
 					<td>${carList.color}</td>
 					<td>${carList.kilometer}</td>
 					<spring:url value="/edit/${carList.id}" var="editURL" />
-					<td><button type="button" class="btn btn-info"
-							onclick="location.href='${editURL}'">Edit</button>
-					<td />
 					<spring:url value="/delete/${carList.id}" var="deleteURL" />
-					<td><button type="button" class="btn btn-danger"
-							onclick="location.href='${deleteURL}'">Delete</button>
+					<td>
+						<div class="btn-group">
+							<button class="btn btn-default dropdown-toggle" type="button"
+								id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="true">
+								Action
+								<!-- <span class="caret"></span> -->
+							</button>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+								<li><a href="${editURL}">Edit</a></li>
+								<li><a href="${deleteURL}">Delete</a></li>
+							</ul>
+						</div>
 					<td />
 				</tr>
 			</c:forEach>
 		</tbody>
-		<tfoot>
-			<td><a href="${pageContext.request.contextPath}/add">Add New
-					Car</a></td>
-		</tfoot>
 	</table>
+
+	<div class=row>
+		<button type="button" class="btn btn-lg btn-block"
+			onclick="location.href='${pageContext.request.contextPath}/add'">Add
+			New Car</button>
+	</div>
 
 	<nav aria-label="...">
 		<ul class="pager">
