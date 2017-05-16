@@ -2,9 +2,10 @@
 
 <body>
 	<div class=container>
-		<div class=row>
-			<div class="center-block"></div>
+		<div class=row class=center-block>
+			<div class="text-center">
 			<h1>Welcome to CarDealer!</h1>
+			</div>
 		</div>
 		<div class=row>
 			<img src="/CarDealer/images/alfa.jpg" class="center-block"  />
