@@ -4,12 +4,18 @@
 <jsp:include page="../templates/header.jsp"></jsp:include>
 
 <body>
+
+	<div class="jumbotron text-center">
+		<h1>CarDealer</h1>
+		<p>Login page</p>
+	</div>
+
 	<div class="container">
+		
 		<form class="form" action="${loginUrl}" method='POST'>
 
 			<div class="text-center" class="col-sm-10">
-				<h1>Login to CarDealer</h1>
-				<div >
+				<div>
 					<h4>Please enter your creditentials below:</h4>
 				</div>
 			</div>

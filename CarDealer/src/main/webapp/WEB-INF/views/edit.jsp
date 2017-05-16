@@ -2,12 +2,10 @@
 <jsp:include page="../templates/header.jsp"></jsp:include>
 
 <body>
-	<br />
-	<br />
-	<br />
-	<b>Edit the car </b>
-	<br />
-	<br />
+	<div class="jumbotron text-center">
+		<h1>CarDealer</h1>
+		<p>Edit car</p>
+	</div>
 	<div>
 		<form:form method="post" action="edit" modelAttribute="car">
 			<br />
@@ -52,13 +50,18 @@
 					<td></td>
 					<td><input type="submit" value="Save" /></td>
 				</tr>
-				<tr>
-
-					<td colspan="2"><a
-						href="${pageContext.request.contextPath}/listCars">Cancel</a></td>
-				</tr>
+	
 			</table>
 		</form:form>
+
 	</div>
+
+	<nav aria-label="...">
+		<ul class="pager">
+			<li class="previous"><a
+				href="${pageContext.request.contextPath}/listCars"><span
+					aria-hidden="true">&larr;</span> Cancel</a></li>
+		</ul>
+	</nav>
 
 	<jsp:include page="../templates/footer.jsp"></jsp:include>

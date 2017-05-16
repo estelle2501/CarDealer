@@ -2,6 +2,10 @@
 <jsp:include page="../templates/header.jsp"></jsp:include>
 
 <body>
+	<div class="jumbotron text-center">
+		<h1>CarDealer</h1>
+		<p>Delete car</p>
+	</div>
 	<br />
 	<br />
 	<br />

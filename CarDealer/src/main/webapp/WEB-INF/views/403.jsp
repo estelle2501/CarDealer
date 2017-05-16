@@ -3,22 +3,30 @@
 <jsp:include page="../templates/header.jsp"></jsp:include>
 
 <body>
-	<h1>HTTP Status 403 - Access is denied</h1>
-
+	<div class="jumbotron text-center">
+		<h1>CarDealer</h1>
+		<p>HTTP Status 403 - Access is denied</p>
+	</div>
 	<c:choose>
 		<c:when test="${empty username}">
-			<h2>You do not have permission to access this page!</h2>
+			<div class="alert alert-danger">
+				<h2>You do not have permission to access this page!</h2>
+			</div>
 		</c:when>
 		<c:otherwise>
-			<h2>
-				Username : ${username} <br /> You do not have permission to access
-				this page!
-			</h2>
+			<div class="alert alert-danger">
+				<h2>As a ${username} you do not have permission to access this
+					page!</h2>
+			</div>
 		</c:otherwise>
 	</c:choose>
 
-	Click
-	<a href="${pageContext.request.contextPath}/listCars">here</a> to go
-	back.
+	<nav aria-label="...">
+		<ul class="pager">
+			<li class="previous"><a
+				href="${pageContext.request.contextPath}/listCars"><span
+					aria-hidden="true">&larr;</span> Back to Car List</a></li>
+		</ul>
+	</nav>
 
 	<jsp:include page="../templates/footer.jsp"></jsp:include>

@@ -3,8 +3,10 @@
 <jsp:include page="../templates/header.jsp"></jsp:include>
 
 <body>
-	<div class="container"></div>
-	<h1>Car List</h1>
+	<div class="jumbotron text-center">
+		<h1>CarDealer</h1>
+		<p>Car List</p>
+	</div>
 
 	<table class="table table-bordered table-striped">
 		<thead>
@@ -48,9 +50,13 @@
 					Car</a></td>
 		</tfoot>
 	</table>
-	<p>
-		${message}<a href="${pageContext.request.contextPath}/">Get back
-			to home page</a><br />
-	</p>
+
+	<nav aria-label="...">
+		<ul class="pager">
+			<li class="previous"><a
+				href="${pageContext.request.contextPath}/"><span
+					aria-hidden="true">&larr;</span> Back to homepage</a></li>
+		</ul>
+	</nav>
 
 	<jsp:include page="../templates/footer.jsp"></jsp:include>
