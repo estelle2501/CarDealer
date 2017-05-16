@@ -10,10 +10,10 @@
 			<img src="/CarDealer/images/alfa.jpg" class="center-block" />
 		</div>
 		<div class=row>
-			<button type="button" class="btn btn-primary btn-lg btn-block"
+			<button type="button" class="btn-lg btn-block"
 				onclick="location.href='${pageContext.request.contextPath}/listCars'">Start
 				application</button>
-			<button type="button" class="btn btn-default btn-lg btn-block"
+			<button type="button" class="btn-sm btn-block"
 				onclick="location.href='${pageContext.request.contextPath}/login?logout'">Log
 				out</button>
 		</div>
