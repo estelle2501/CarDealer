@@ -13,15 +13,16 @@
 		<!-- access denied page -->
 		<access-denied-handler ref="customAccessDeniedHandler" />
 
-		<intercept-url pattern="/" access="hasRole('USER')" />
-		<intercept-url pattern="/home" access="hasRole('USER')" />
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/home" access="permitAll" />
+		<intercept-url pattern="/listCars" access="hasRole('USER')" />
 		<intercept-url pattern="/add" access="hasRole('USER')" />
 		<intercept-url pattern="/edit/{id}"
 			access="hasRole('USER') and hasRole('ADMIN')" />
 		<intercept-url pattern="/delete/{id}"
 			access="hasRole('USER') and hasRole('ADMIN')" />
 
-		<form-login login-page="/login" default-target-url="/home"
+		<form-login login-page="/login" default-target-url="/listCars"
 			authentication-failure-url="/login?error" username-parameter="username"
 			password-parameter="password" />
 		<logout logout-success-url="/login?logout" />
