@@ -8,65 +8,77 @@
 		<p>Car List</p>
 	</div>
 
-	<table class="table table-bordered table-striped">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Make</th>
-				<th>Model</th>
-				<th>Year</th>
-				<th>Fuel</th>
-				<th>Engine</th>
-				<th>Color</th>
-				<th>Fuel</th>
-				<th>Kilometer</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="carList" items="${carList}">
-				<tr>
-					<td>${carList.id}</td>
-					<td>${carList.make}</td>
-					<td>${carList.model}</td>
-					<td>${carList.year}</td>
-					<td>${carList.fuel}</td>
-					<td>${carList.engine}</td>
-					<td>${carList.gearbox}</td>
-					<td>${carList.color}</td>
-					<td>${carList.kilometer}</td>
-					<spring:url value="/edit/${carList.id}" var="editURL" />
-					<spring:url value="/delete/${carList.id}" var="deleteURL" />
-					<td>
-						<div class="btn-group">
-							<button class="btn btn-default dropdown-toggle" type="button"
-								id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="true">
-								Action
-								<!-- <span class="caret"></span> -->
-							</button>
-							<ul class="dropdown-menu" aria-labelledby="dropdownMenu">
-								<li><a href="${editURL}">Edit</a></li>
-								<li><a href="${deleteURL}">Delete</a></li>
-							</ul>
-						</div>
-					<td />
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+	<div class="container">
+		<div class="row">
+			<nav class="col-sm-3 col-md-2 d-none d-sm-block bg-faded sidebar">
+				<ul class="nav nav-pills flex-column">
+					<li class="nav-item"><a class="nav-link active"
+						href="${pageContext.request.contextPath}/listCars">Car List <span
+							class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/add">Add New Car</a></li>
+				</ul>
+				<ul class="nav nav-pills flex-column">
+					<li class="nav-item"><a class="nav-logout"
+						href="${pageContext.request.contextPath}/login?logout">Sign
+							out</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="container">
+		<main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3"
+			role="main">
 
-	<div class=row>
-		<button type="button" class="btn btn-lg btn-block"
-			onclick="location.href='${pageContext.request.contextPath}/add'">Add
-			New Car</button>
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Make</th>
+						<th>Model</th>
+						<th>Year</th>
+						<th>Fuel</th>
+						<th>Engine</th>
+						<th>Color</th>
+						<th>Fuel</th>
+						<th>Kilometer</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="carList" items="${carList}">
+						<tr>
+							<td>${carList.id}</td>
+							<td>${carList.make}</td>
+							<td>${carList.model}</td>
+							<td>${carList.year}</td>
+							<td>${carList.fuel}</td>
+							<td>${carList.engine}</td>
+							<td>${carList.gearbox}</td>
+							<td>${carList.color}</td>
+							<td>${carList.kilometer}</td>
+							<spring:url value="/edit/${carList.id}" var="editURL" />
+							<spring:url value="/delete/${carList.id}" var="deleteURL" />
+							<td>
+								<div class="btn-group">
+									<button class="btn btn-default dropdown-toggle" type="button"
+										id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="true">
+										Action
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+										<li><a href="${editURL}">Edit</a></li>
+										<li><a href="${deleteURL}">Delete</a></li>
+									</ul>
+								</div>
+							<td/>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</main>
 	</div>
 
-	<nav aria-label="...">
-		<ul class="pager">
-			<li class="previous"><a
-				href="${pageContext.request.contextPath}/"><span
-					aria-hidden="true">&larr;</span> Back to homepage</a></li>
-		</ul>
-	</nav>
 
 	<jsp:include page="../templates/footer.jsp"></jsp:include>

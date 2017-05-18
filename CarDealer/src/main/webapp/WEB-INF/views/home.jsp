@@ -1,7 +1,5 @@
 <jsp:include page="../templates/header.jsp"></jsp:include>
 
-<link href="dashboard.css" rel="stylesheet">
-
 <body>
 	<div class="jumbotron text-center">
 		<h1>CarDealer</h1>
