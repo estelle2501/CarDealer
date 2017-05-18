@@ -8,6 +8,25 @@
 		<p>Add new car</p>
 	</div>
 	<div class="container">
+		<div class="row">
+			<nav class="col-sm-3 col-md-2 d-none d-sm-block bg-faded sidebar">
+				<ul class="nav nav-pills flex-column">
+					<li class="nav-item"><a class="nav-link active"
+						href="${pageContext.request.contextPath}/listCars">Car List</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${pageContext.request.contextPath}/add">Add New Car<span
+							class="sr-only">(current)</span>
+					</a></li>
+				</ul>
+				<ul class="nav nav-pills flex-column">
+					<li class="nav-item"><a class="nav-logout"
+						href="${pageContext.request.contextPath}/login?logout">Sign
+							out</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="container">
 		<form class="form" action="add" method="POST">
 
 			<div class="text-center" class="col-sm-10">
@@ -74,13 +93,5 @@
 		</form>
 
 	</div>
-
-	<nav aria-label="...">
-		<ul class="pager">
-			<li class="previous"><a
-				href="${pageContext.request.contextPath}/listCars"><span
-					aria-hidden="true">&larr;</span> Cancel</a></li>
-		</ul>
-	</nav>
 
 	<jsp:include page="../templates/footer.jsp"></jsp:include>
