@@ -24,115 +24,105 @@
 				</ul>
 			</div>
 			<div class=" col-sm-8">
-				<form class="form" action="delete" method="POST">
-
-					<div class="text-center" class="col-sm-10">
-						<div>
-							<h4>Are you sure you want to delete this car?</h4>
+				<div class="text-center" class="col-sm-10">
+					<div>
+						<h4>Are you sure you want to delete this car?</h4>
+					</div>
+				</div>
+				<form class="form-horizontal" action="${deleteUrl}" method="post">
+					<div class="form-group">
+						<label for="id" class="col-sm-2 control-label">Id:</label>
+						<div class="col-sm-10">
+							<input class="form-control" value=${car.id
+									} readonly>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="make" class="col-sm-2 control-label">Make:</label>
+						<div class="col-sm-10">
+							<input class="form-control" value=${car.make
+									} readonly>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="make" class="col-sm-2 control-label">Make:</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-output" name="make">
-						</div>
-
 						<label for="model" class="col-sm-2 control-label">Model:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="model">
-						</div>
-						<div class="row">
-							<label for="year" class="col-sm-2 control-label">Year:</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="year">
-							</div>
-
-							<label for="fuel" class="col-sm-2 control-label">Fuel:</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="fuel">
-							</div>
-
-							<label for="engine" class="col-sm-2 control-label">Engine:</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="engine">
-							</div>
-
-							<label for="gearbox" class="col-sm-2 control-label">Gearbox:</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="gearbox">
-							</div>
-
-							<label for="color" class="col-sm-2 control-label">Color:</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="color">
-							</div>
-
-							<label for="kilometer" class="col-sm-2 control-label">Kilometer:</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="kilometer">
-							</div>
-
-							<button name="submit" type="submit" value="submit"
-								class="btn-lg btn btn-default">Yes, delete this car</button>
-
+							<input class="form-control" value=${car.model } readonly>
 						</div>
 					</div>
-					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" />
+
+					<div class="form-group">
+						<label for="year" class="col-sm-2 control-label">Year:</label>
+						<div class="col-sm-10">
+							<input class="form-control" value=${car.year
+									} readonly>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="fuel" class="col-sm-2 control-label">Fuel:</label>
+						<div class="col-sm-10">
+							<input class="form-control" value=${car.fuel
+									} readonly>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="engine" class="col-sm-2 control-label">Engine:</label>
+						<div class="col-sm-10">
+							<input class="form-control" value=${car.engine
+									}
+								readonly>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="gearbox" class="col-sm-2 control-label">Gearbox:</label>
+						<div class="col-sm-10">
+							<input class="form-control" value=${car.gearbox
+									}
+								readonly>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="color" class="col-sm-2 control-label">Color:</label>
+						<div class="col-sm-10">
+							<input class="form-control" value=${car.color
+									}
+								readonly>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="kilometer" class="col-sm-2 control-label">Kilometer:</label>
+						<div class="col-sm-10">
+							<input class="form-control" value=${car.kilometer
+									}
+								readonly>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button name="submit" type="submit" value="submit"
+								class="btn btn-danger">Yes, delete this car</button>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button class="
+								btn btn-default"
+								onclick="location.href='${pageContext.request.contextPath}/carList'">Cancel</button>
+						</div>
+
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+
+					</div>
 				</form>
-
-				<form:form method="post" action="delete" modelAttribute="car">
-					<br />
-					<table>
-						<tr>
-							<td></td>
-							<td><form:hidden path="id" /></td>
-						</tr>
-						<tr>
-						<tr>
-							<td>Make :</td>
-							<td><form:input path="make" /></td>
-						<tr>
-							<td>Model :</td>
-							<td><form:input path="model" /></td>
-						</tr>
-						<tr>
-							<td>Year :</td>
-							<td><form:input path="year" /></td>
-						</tr>
-						<tr>
-							<td>Fuel :</td>
-							<td><form:input path="fuel" /></td>
-						</tr>
-						<tr>
-							<td>Engine :</td>
-							<td><form:input path="engine" /></td>
-						</tr>
-						<tr>
-							<td>Gearbox :</td>
-							<td><form:input path="gearbox" /></td>
-						</tr>
-						<tr>
-							<td>Color :</td>
-							<td><form:input path="color" /></td>
-						</tr>
-						<tr>
-							<td>Kilometer :</td>
-							<td><form:input path="kilometer" /></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><input type="submit" value="Yes, delete this car" /></td>
-						</tr>
-						<tr>
-
-							<td colspan="2"><a
-								href="${pageContext.request.contextPath}/listCars">No, do
-									not delete this car</a></td>
-						</tr>
-					</table>
-				</form:form>
 			</div>
 		</div>
 	</div>
