@@ -136,4 +136,11 @@
 			</div>
 		</div>
 	</div>
+
+	<footer class="container-fluid navbar-fixed-bottom">
+		<p>
+			<span class="glyphicon glyphicon-copyright-mark"></span> 2017
+			CarDealer
+		</p>
+	</footer>
 	<jsp:include page="../templates/footer.jsp"></jsp:include>

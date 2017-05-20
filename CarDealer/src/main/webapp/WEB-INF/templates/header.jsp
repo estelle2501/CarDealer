@@ -9,7 +9,7 @@
 
 <!-- Bootstrap -->
 <link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <link href="${pageContext.request.contextPath}/css/car.css"
