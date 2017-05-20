@@ -27,47 +27,26 @@ h1 {
 	overflow-y: auto;
 }
 
-/*
- * Sidebar
- */
-.sidebar {
-	position: fixed;
-	position: absolute;
-	top: 300px;
-	bottom: 0;
-	left: 50px;
-	z-index: 1000;
-	padding: 20px;
-	overflow-x: hidden;
-	overflow-y: auto;
-	/* Scrollable contents if viewport is shorter than content. */
-	border-right: 1px solid #eee;
-	overflow-y: auto;
+/* Set gray background color and 100% height */
+.sidenav {
+	/* 	background-color: #f1f1f1; */
+	height: 100%;
 }
 
-/* Sidebar navigation */
-.sidebar {
-	padding-left: 0;
-	padding-right: 0;
-}
-
-.sidebar .nav {
-	margin-bottom: 20px;
-}
-
-.sidebar .nav-item {
-	width: 100%;
-}
-
-.sidebar .nav-item+.nav-item {
-	margin-left: 0;
-}
-
-.sidebar .nav-link {
-	border-radius: 0;
-}
-
-.sidebar .nav-logout {
+.sidenav .nav-logout {
 	border-radius: 1;
 	top: 400;
+}
+/* On small screens, set height to 'auto' for sidenav and grid */
+/* @media screen and (max-width: 767px) {
+	.sidenav {
+		height: auto;
+		padding: 15px;
+	} */
+
+/* Set black background color, white text and some padding */
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
 }
