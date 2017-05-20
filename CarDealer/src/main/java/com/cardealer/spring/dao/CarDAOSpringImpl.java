@@ -78,7 +78,7 @@ public class CarDAOSpringImpl implements CarDAOSpring {
 	public List<Car> listCars() {
 		List<Car> foundCarsList = new ArrayList<>();
 
-		String SQLSelect = "SELECT  * FROM cars ";
+		String SQLSelect = "SELECT  * FROM cars ORDER BY id DESC ";
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		foundCarsList = jdbcTemplate.query(SQLSelect, new CarMapper());
