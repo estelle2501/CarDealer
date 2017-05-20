@@ -24,52 +24,101 @@
 				</ul>
 			</div>
 			<div class=" col-sm-8">
-				<form:form method="post" action="edit" modelAttribute="car">
-					<br />
-					<table>
-						<tr>
-							<td></td>
-							<td><form:hidden path="id" /></td>
-						</tr>
-						<tr>
-						<tr>
-							<td>Make :</td>
-							<td><form:input path="make" /></td>
-						<tr>
-							<td>Model :</td>
-							<td><form:input path="model" /></td>
-						</tr>
-						<tr>
-							<td>Year :</td>
-							<td><form:input path="year" /></td>
-						</tr>
-						<tr>
-							<td>Fuel :</td>
-							<td><form:input path="fuel" /></td>
-						</tr>
-						<tr>
-							<td>Engine :</td>
-							<td><form:input path="engine" /></td>
-						</tr>
-						<tr>
-							<td>Gearbox :</td>
-							<td><form:input path="gearbox" /></td>
-						</tr>
-						<tr>
-							<td>Color :</td>
-							<td><form:input path="color" /></td>
-						</tr>
-						<tr>
-							<td>Kilometer :</td>
-							<td><form:input path="kilometer" /></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><input type="submit" value="Save" /></td>
-						</tr>
+				<div class="text-center" class="col-sm-10">
+					<div>
+						<h4>Please edit the following form:</h4>
+					</div>
+				</div>
+				<form class="form-horizontal" action="${editUrl}" method="post">
+					<div class="form-group">
+						<label for="id" class="col-sm-2 control-label">Id:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" value=${car.id } readonly>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="make" class="col-sm-2 control-label">Make:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="make"
+								value=${car.make }>
+						</div>
+					</div>
 
-					</table>
-				</form:form>
+					<div class="form-group">
+						<label for="model" class="col-sm-2 control-label">Model:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="model"
+								value=${car.model }>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="year" class="col-sm-2 control-label">Year:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="year"
+								value=${car.year }>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="fuel" class="col-sm-2 control-label">Fuel:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="fuel"
+								value=${car.fuel }>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="engine" class="col-sm-2 control-label">Engine:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="engine"
+								value=${car.engine }>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="gearbox" class="col-sm-2 control-label">Gearbox:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="gearbox"
+								value=${car.gearbox }>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="color" class="col-sm-2 control-label">Color:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="color"
+								value=${car.color }>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="kilometer" class="col-sm-2 control-label">Kilometer:</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="kilometer"
+								value=${car.kilometer }>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button name="submit" type="submit" value="submit"
+								class="btn btn-warning">Yes, apply changes to the car</button>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button class="
+								btn btn-default"
+								onclick="location.href='${pageContext.request.contextPath}/carList'">Cancel</button>
+						</div>
+
+						<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
+
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
