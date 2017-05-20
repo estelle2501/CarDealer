@@ -1,4 +1,10 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<footer class="container-fluid">
+	<p>
+		<span class="glyphicon glyphicon-copyright-mark"></span> 2017 CarDealer
+	</p>
+</footer>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
