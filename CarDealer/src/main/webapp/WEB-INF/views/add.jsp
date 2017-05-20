@@ -96,9 +96,17 @@
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button name="submit" type="submit" value="submit"
-								class="btn btn-default">Save</button>
+								class="btn btn-success">Yes, add this car</button>
 						</div>
-						
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button class="
+								btn btn-default"
+								onclick="location.href='${pageContext.request.contextPath}/carList'">Cancel</button>
+						</div>
+
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
 
