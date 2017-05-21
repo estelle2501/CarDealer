@@ -35,8 +35,8 @@
 									<th>Year</th>
 									<th>Fuel</th>
 									<th>Engine</th>
+									<th>Gearbox</th>
 									<th>Color</th>
-									<th>Fuel</th>
 									<th>Kilometer</th>
 									<th></th>
 								</tr>
