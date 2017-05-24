@@ -23,7 +23,7 @@
 							out</a></li>
 				</ul>
 			</div>
-			<div class=" col-sm-8">
+			<div class=" col-sm-4 col-sm-offset-2">
 				<div class="text-center" class="col-sm-10">
 					<div>
 						<h4>Please edit the following form:</h4>
@@ -40,7 +40,7 @@
 						<label for="make" class="col-sm-2 control-label">Make:</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" name="make"
-								value=${car.make }>
+								maxlength="10" value=${car.make }>
 						</div>
 					</div>
 
@@ -48,55 +48,86 @@
 						<label for="model" class="col-sm-2 control-label">Model:</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" name="model"
-								value=${car.model }>
+								maxlength="20" value=${car.model }>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="year" class="col-sm-2 control-label">Year:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="year"
-								value=${car.year }>
+							<select class="form-control" name="year" value=${car.year }>
+								<option>1999</option>
+								<option>2000</option>
+								<option>2001</option>
+								<option>2002</option>
+								<option>2003</option>
+								<option>2004</option>
+								<option>2005</option>
+								<option>2006</option>
+								<option>2007</option>
+								<option>2008</option>
+								<option>2009</option>
+								<option>2010</option>
+								<option>2011</option>
+								<option>2012</option>
+								<option>2013</option>
+								<option>2014</option>
+								<option>2015</option>
+								<option>2016</option>
+								<option>2017</option>
+							</select>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="fuel" class="col-sm-2 control-label">Fuel:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="fuel"
-								value=${car.fuel }>
+							<select class="form-control" name="fuel" value=${car.fuel }>
+								<option>gas</option>
+								<option>diesel</option>
+							</select>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="engine" class="col-sm-2 control-label">Engine:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="engine"
-								value=${car.engine }>
+							<input type=number class="form-control" name="engine" max="3.5"
+								step=".1" placeholder="0.0" value=${car.engine }>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="gearbox" class="col-sm-2 control-label">Gearbox:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="gearbox"
-								value=${car.gearbox }>
+							<select class="form-control" name="gearbox" value=${car.gearbox }>
+								<option>manual</option>
+								<option>automat</option>
+							</select>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="color" class="col-sm-2 control-label">Color:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="color"
-								value=${car.color }>
+							<select class="form-control" name="color" value=${car.color }>
+								<option>black</option>
+								<option>blue</option>
+								<option>grey</option>
+								<option>green</option>
+								<option>red</option>
+								<option>silver</option>
+								<option>white</option>
+								<option>yellow</option>
+							</select>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="kilometer" class="col-sm-2 control-label">Kilometer:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="kilometer"
-								value=${car.kilometer }>
+							<input type="number" class="form-control" name="kilometer"
+								min="0" max="999999" value=${car.kilometer }>
 						</div>
 					</div>
 
