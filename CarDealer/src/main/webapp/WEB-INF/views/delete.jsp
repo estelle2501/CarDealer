@@ -23,7 +23,7 @@
 							out</a></li>
 				</ul>
 			</div>
-			<div class=" col-sm-8">
+			<div class=" col-sm-4 col-sm-offset-2">
 				<div class="text-center" class="col-sm-10">
 					<div>
 						<h4>Are you sure you want to delete this car?</h4>
