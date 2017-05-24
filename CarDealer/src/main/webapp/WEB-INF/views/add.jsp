@@ -24,14 +24,14 @@
 							out</a></li>
 				</ul>
 			</div>
-			<div class=" col-sm-8">
+			<div class=" col-sm-4 col-sm-offset-2">
 				<div class="text-center" class="col-sm-10">
 					<div>
 						<h4>Please fill in the following form to add a new car:</h4>
 					</div>
 				</div>
 				<form class="form-horizontal" action="add" method="POST">
-					<div class="form-group">
+					<div class="form-group ">
 						<label for="make" class="col-sm-2 control-label">Make:</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" name="make">
@@ -70,7 +70,10 @@
 					<div class="form-group">
 						<label for="fuel" class="col-sm-2 control-label">Fuel:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="fuel">
+							<select class="form-control" name="fuel">
+								<option>gas</option>
+								<option>diesel</option>
+							</select>
 						</div>
 					</div>
 
@@ -84,21 +87,33 @@
 					<div class="form-group">
 						<label for="gearbox" class="col-sm-2 control-label">Gearbox:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="gearbox">
+							<select class="form-control" name="gearbox">
+								<option>manual</option>
+								<option>automat</option>
+							</select>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="color" class="col-sm-2 control-label">Color:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="color">
+							<select class="form-control" name="color">
+								<option>black</option>
+								<option>blue</option>
+								<option>grey</option>
+								<option>green</option>
+								<option>red</option>
+								<option>silver</option>
+								<option>white</option>
+								<option>yellow</option>
+							</select>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="kilometer" class="col-sm-2 control-label">Kilometer:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="kilometer">
+							<input type="number" class="form-control" name="kilometer">
 						</div>
 					</div>
 
