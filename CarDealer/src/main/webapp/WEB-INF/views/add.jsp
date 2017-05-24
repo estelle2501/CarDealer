@@ -34,14 +34,16 @@
 					<div class="form-group ">
 						<label for="make" class="col-sm-2 control-label">Make:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="make">
+							<input type="text" class="form-control" name="make"
+								maxlength="10">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="model" class="col-sm-2 control-label">Model:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="model">
+							<input type="text" class="form-control" name="model"
+								maxlength="20">
 						</div>
 					</div>
 
@@ -63,6 +65,11 @@
 								<option>2010</option>
 								<option>2011</option>
 								<option>2012</option>
+								<option>2013</option>
+								<option>2014</option>
+								<option>2015</option>
+								<option>2016</option>
+								<option>2017</option>
 							</select>
 						</div>
 					</div>
@@ -80,7 +87,8 @@
 					<div class="form-group">
 						<label for="engine" class="col-sm-2 control-label">Engine:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="engine">
+							<input type="number" class="form-control" name="engine" min="1.0"
+								max="3.5" step=".1" placeholder="0.0">
 						</div>
 					</div>
 
@@ -113,7 +121,8 @@
 					<div class="form-group">
 						<label for="kilometer" class="col-sm-2 control-label">Kilometer:</label>
 						<div class="col-sm-10">
-							<input type="number" class="form-control" name="kilometer">
+							<input type="number" class="form-control" name="kilometer"
+								min="0" max="999999">
 						</div>
 					</div>
 
