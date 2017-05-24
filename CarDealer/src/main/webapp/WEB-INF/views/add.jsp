@@ -34,16 +34,16 @@
 					<div class="form-group ">
 						<label for="make" class="col-sm-2 control-label">Make:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="make"
-								maxlength="10">
+							<input type="text" class="form-control required" name="make"
+								maxlength="10" required>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="model" class="col-sm-2 control-label">Model:</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="model"
-								maxlength="20">
+							<input type="text" class="form-control required" name="model"
+								maxlength="20" required>
 						</div>
 					</div>
 
