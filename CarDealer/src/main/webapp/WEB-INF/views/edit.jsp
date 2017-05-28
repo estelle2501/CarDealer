@@ -142,7 +142,7 @@
 						<div class="col-sm-offset-2 col-sm-10">
 							<button class="
 								btn btn-default"
-								onclick="location.href='${pageContext.request.contextPath}/carList'">Cancel</button>
+								onclick="location.href='${pageContext.request.contextPath}/listCars'">Cancel</button>
 						</div>
 
 						<input type="hidden" name="${_csrf.parameterName}"
