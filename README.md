@@ -1,10 +1,14 @@
 # CarDealer
-Car Dealer is the web application, that makes car dealership easier to manage.
+Car Dealer is a simple CRUD web application that enables to add/delete/update a car from database and displays all added cars with its attributes (eg. car model, year of manufacture, fuel type).
 
-Main use cases: adding/deleting a car from database, displaying all added cars, searching for a car according to search criteria (eg. car model, year of manufacture, fuel type).
+Frontend: HTML, CSS, Bootstrap
+Backend: Java, Maven, Spring (MVC, JDBC, Security)
+DB: PostgreSQL
+Server: Tomcat 8.0
 
-Technologies planned for Car Dealer: JAVA 8, Eclipse, Maven, JUnit, Spring MVC, PostgreSQL, Hibernate, Tomcat, HTML5.
+IDE: Eclipse Luna
+Repository: GIT, GitHub
 
-More information about the project: https://zapiskiprogramistki.wordpress.com/tag/cardealer/
+More information about the project on my blog: https://zapiskiprogramistki.wordpress.com/tag/cardealer/
 
-The CarDealer is being developed for the "Get Noticed! 2017" contest: http://devstyle.pl/daj-sie-poznac/
+The CarDealer was developed for the "Get Noticed! 2017" contest: http://devstyle.pl/daj-sie-poznac/
